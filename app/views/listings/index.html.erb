@@ -22,9 +22,11 @@
           <td><%= listing.prompt %></td>
           <!-- <td><%= listing.application %></td> -->
           <td><%= listing.option %></td>
-          <td><%= link_to 'Show', listing, class: "btn btn-link" %></td>
-          <td><%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %></td>
-          <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+          <td><%= link_to 'View', listing, class: "btn btn-link" %></td>
+          <% if (user_signed_in?) && (current_user == listing.user) %>
+            <td><%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %></td>
+            <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -36,4 +38,6 @@
   </ul>
 <br>
 
+<% if user_signed_in? %>
 <%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+<% end %>
