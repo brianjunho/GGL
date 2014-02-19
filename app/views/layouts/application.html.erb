@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gaigaile</title>
+    <title>改改乐 Gaigaile</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -11,14 +11,14 @@
   <%= render 'layouts/header' %>
 
   <div class="container">
-       <% flash.each do |name, msg| %>
-         <% if msg.is_a?(String) %>
-           <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
-           	<button type="button" class="close" data-dismiss="alert" aria-hidden"true">&times;</button>
-           	<%= content_tag :div, msg, :id => "flash_#{name}" %>
-           </div>
-          <% end %>
+     <% flash.each do |name, msg| %>
+       <% if msg.is_a?(String) %>
+         <div class="alert alert-<%= name == :notice ? "success" : "danger" %> alert-dismissable">
+         	<button type="button" class="close" data-dismiss="alert" aria-hidden"true">&times;</button>
+         	<%= content_tag :div, msg, :id => "flash_#{name}" %>
+         </div>
         <% end %>
+      <% end %>
   	
     <%= yield %>
     
