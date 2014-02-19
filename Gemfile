@@ -1,3 +1,4 @@
+source 'http://code.stripe.com'
 source 'https://rubygems.org'
 ruby "2.0.0"
 
@@ -28,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "figaro"
 gem 'devise'
+gem 'stripe'
 
 group :production do
   gem 'pg'
