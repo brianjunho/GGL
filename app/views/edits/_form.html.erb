@@ -1,0 +1,44 @@
+<%= form_for([@listing, @edit]) do |f| %>
+  <% if @edit.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
+
+      <ul>
+      <% @edit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <h4><strong>Essay Type: </strong><%= @listing.name %></h4>
+    <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+    <p><strong>Pricing Option: </strong><%= @listing.option %></p>
+    <p><strong>Price: </strong>$XXX</p><br>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+        <p><strong>Application: </strong></p>
+        <p><%= @listing.application %></p>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <p><strong>Proofread Version: </strong></p>
+        <!-- <%= f.label :proofread %> -->
+        <%= f.text_area :proofread, rows: "25", placeholder: "Write edits here", class: "form-control" %>
+      </div>
+       <div class="form-group">
+          <p><strong>Comments: </strong></p>
+          <!-- <%= f.label :comments %> -->
+          <%= f.text_area :comments, rows: "5", placeholder: "Write comments here. Leave blank if requester did not choose this option", class: "form-control" %>
+        </div>
+      
+      <div class="form-group">
+        <%= f.submit "Complete Edit", class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+    <br><br><br>
+<% end %>

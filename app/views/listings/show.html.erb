@@ -8,6 +8,10 @@
 		<p><strong>Prompt: </strong><%= @listing.prompt %></p>
 		<p><strong>Pricing Option: </strong><%= @listing.option %></p><br>
 		<p><strong>Price: </strong>$XXX</p>
+        <br>
+        <div class="center">
+      <%= link_to "Edit Now", new_listing_edit_path(@listing), class: "btn btn-primary" %>
+    </div>
     </div>
 </div>
 

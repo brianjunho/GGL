@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   has_many :listings, dependent: :destroy
+  has_many :requests, class_name: "Edit", foreign_key: "requester_id"
+  has_many :edits, class_name: "Edit", foreign_key: "editor_id"
 end

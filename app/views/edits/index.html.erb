@@ -1,0 +1,27 @@
+<h1>Listing edits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Proofread</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @edits.each do |edit| %>
+      <tr>
+        <td><%= edit.proofread %></td>
+        <td><%= link_to 'Show', edit %></td>
+        <td><%= link_to 'Edit', edit_edit_path(edit) %></td>
+        <td><%= link_to 'Destroy', edit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Edit', new_edit_path %>

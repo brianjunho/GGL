@@ -1,6 +1,8 @@
 GGL::Application.routes.draw do
   devise_for :users
-  resources :listings
+  resources :listings do
+    resources :edits
+  end
 
   get "pages/home"
   get "pages/about"

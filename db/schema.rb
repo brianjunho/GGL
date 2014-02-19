@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219083247) do
+ActiveRecord::Schema.define(version: 20140219102803) do
+
+  create_table "edits", force: true do |t|
+    t.text     "proofread"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "listing_id"
+    t.integer  "requester_id"
+    t.integer  "editor_id"
+    t.text     "comments"
+  end
 
   create_table "listings", force: true do |t|
     t.string   "name"
