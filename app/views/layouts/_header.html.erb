@@ -15,9 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to "About", pages_about_path %></li>
-
-       
         <li><%= link_to "Contact", pages_contact_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Listings", listings_path %></li>
+        <% end %>
       </ul>
      <!--
       <form class="navbar-form navbar-left" role="search">

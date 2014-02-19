@@ -13,20 +13,23 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control" %>
+    <b><p>What is the essay type?</p></b>
+    <p class="help-block">(ie. Personal Statement, Resume, Sample Writing, etc)</p>
+    <%= f.text_field :name, placeholder: "Enter type of document", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :prompt %><br>
-    <%= f.text_area :prompt, class: "form-control" %>
+    <p class="help-block">What is the essay topic?</p>
+    <%= f.text_area :prompt, placeholder: "Enter prompt", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :application %><br>
-    <%= f.text_area :application, class: "form-control" %>
+    <%= f.text_area :application, placeholder: "Paste application here", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :option %><br>
-    <%= f.text_field :option, class: "form-control" %>
+    <b>Payment </b><%= f.label :option %><br>
+    <p class="help-block">0. Basic Proofread <br>1. With Comments</p>
+    <%= f.text_field :option, placeholder: "Select Pricing Plan", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
