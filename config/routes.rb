@@ -1,13 +1,15 @@
 GGL::Application.routes.draw do
   devise_for :users
   resources :listings do
-    resources :edits
+    resources :edits, only: [:new, :create]
   end
 
   get "pages/home"
   get "pages/about"
   get "pages/contact"
   get 'requester' => "listings#requester"
+  get 'tasks' => "edits#tasks"
+  get 'completed' => "edits#completed"
 
   root 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

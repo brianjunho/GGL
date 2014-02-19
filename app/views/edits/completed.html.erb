@@ -1,0 +1,38 @@
+<div class="center">
+  <h1>Your Editing History</h1>
+</div>
+
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="center">Document Type</th>
+        <th class="center">Requester</th>
+        <th class="center">Date Edited</th>
+        <th class="center">Money made</th>
+        <th class="center"></th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @edits.each do |edit| %>
+        <tr>
+          <td class="center"><%= edit.listing.name %></td>
+          <td class="center"><%= edit.requester.name %></td>
+          <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
+           <td class="center">Still need to calculate</td>
+           <th class="center">Link to show order</th>
+          <!-- <td><%= listing.application %></td> -->
+                </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+ 
+<br>
+
+<% if user_signed_in? %>
+<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+<% end %>
+  

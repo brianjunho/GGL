@@ -2,6 +2,14 @@ class EditsController < ApplicationController
   before_action :set_edit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  def tasks
+    @edits = Edit.all.where(requester: current_user).order("created_at DESC")
+  end
+
+  def completed
+    @edits = Edit.all.where(editor: current_user).order("created_at DESC")
+  end
+
   # GET /edits
   # GET /edits.json
   def index
