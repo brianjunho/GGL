@@ -1,0 +1,38 @@
+<h1>Listings</h1>
+
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Prompt</th>
+        <th>Application</th>
+        <th>Option</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @listings.each do |listing| %>
+        <tr>
+          <td><%= listing.name %></td>
+          <td><%= listing.prompt %></td>
+          <td><%= listing.application %></td>
+          <td><%= listing.option %></td>
+          <td><%= link_to 'Show', listing, class: "btn btn-link" %></td>
+          <td><%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %></td>
+          <td><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <ul class="pager">
+    <li class="previous"><a href="#">&larr; Older</a></li>
+    <li class="next"><a href="#">Newer &rarr;</a></li>
+  </ul>
+<br>
+
+<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>

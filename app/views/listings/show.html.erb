@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-6">
+    	<h4><strong>Application: </strong></h4>
+   	   	<p><%= @listing.application %></p>
+    </div>
+    <div class="col-md-6">
+		<h4><strong>Essay Type: </strong><%= @listing.name %></h4>
+		<p><strong>Prompt: </strong><%= @listing.prompt %></p>
+		<p><strong>Pricing Option: </strong><%= @listing.option %></p><br>
+		<p><strong>Price: </strong>$XXX</p>
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
+<%= link_to 'Back', listings_path, class: "btn btn-link" %>
