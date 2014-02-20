@@ -19,16 +19,13 @@ class EditsController < ApplicationController
   # GET /edits/1
   # GET /edits/1.json
   def show
+    @listing = Listing.find(params[:listing_id])
   end
 
   # GET /edits/new
   def new
     @edit = Edit.new
     @listing = Listing.find(params[:listing_id])
-  end
-
-  # GET /edits/1/edit
-  def edit
   end
 
   # POST /edits
@@ -40,11 +37,11 @@ class EditsController < ApplicationController
 
     @edit.listing_id = @listing.id
     @edit.editor_id = current_user.id
-    @edit.requester_id = @seller.id
+    @edit.requester_id = @requester.id
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to @edit, notice: 'Edit was successfully created.' }
+        format.html { redirect_to completed_path, notice: 'Edit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -53,29 +50,6 @@ class EditsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /edits/1
-  # PATCH/PUT /edits/1.json
-  def update
-    respond_to do |format|
-      if @edit.update(edit_params)
-        format.html { redirect_to @edit, notice: 'Edit was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @edit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /edits/1
-  # DELETE /edits/1.json
-  def destroy
-    @edit.destroy
-    respond_to do |format|
-      format.html { redirect_to edits_url }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

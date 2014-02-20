@@ -1,7 +1,7 @@
 GGL::Application.routes.draw do
   devise_for :users
   resources :listings do
-    resources :edits, only: [:new, :create]
+    resources :edits
   end
 
   get "pages/home"

@@ -1,5 +1,5 @@
 <div class="center">
-  <h1>Your Editing History (Profile page?)</h1>
+  <h1>Your Job History /(Profile page?)</h1>
 </div>
 
 <p>Attach image here</p>
@@ -25,8 +25,9 @@
           <td class="center"><%= edit.requester.name %></td>
           <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
            <td class="center">Still need to calculate</td>
-           <th class="center">Link to show order</th>
-          <!-- <td><%= listing.application %></td> -->
+           <td class="form-group"><%= link_to "View Order", listing_edit_path([@edit.listing_id, @edit]), class: "btn btn-primary" %></td>
+           
+          
                 </tr>
       <% end %>
     </tbody>
