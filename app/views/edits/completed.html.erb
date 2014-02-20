@@ -1,7 +1,10 @@
 <div class="center">
-  <h1>Your Editing History</h1>
+  <h1>Your Editing History (Profile page?)</h1>
 </div>
 
+<p>Attach image here</p>
+
+<p>Attach stats (number of listings, number of jobs completed, rankings, reviews)</p>
 
   <table class="table table-bordered table-striped">
     <thead>
@@ -28,11 +31,13 @@
       <% end %>
     </tbody>
   </table>
+
+<p> Add comments section down here for others to give them feedback?</p>
   
  
 <br>
 
 <% if user_signed_in? %>
-<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
+<%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: { no_turbolink: true } %>
 <% end %>
   

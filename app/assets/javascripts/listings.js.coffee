@@ -2,20 +2,23 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
+
 jQuery ->
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
-  payment.setupForm()
+  listing.setupForm()
 
-payment =
+listing =
   setupForm: ->
-    $('#new_order').submit ->
-        $('input[type=submit]').attr('disabled', true)
-        Stripe.card.createToken($('#new_order'), payment.handleStripeResponse)
-        false
+    $('#new_listing').submit ->
+      $('input[type=submit]').attr('disabled', true)
+      Stripe.card.createToken($('#new_listing'), listing.handleStripeResponse)
+      false
 
   handleStripeResponse: (status, response) ->
     if status == 200
-      $('#new_order').append($('<input type="hidden" name="stripeToken" />').val(response.id)) And after this, I’ll write $('#new_order')[0].submit()
+      $('#new_listing').append($('<input type="hidden" name="stripeToken" />').val(response.id))
+      $('#new_listing')[0].submit()
     else
       $('#stripe_error').text(response.error.message).show()
       $('input[type=submit]').attr('disabled', false)

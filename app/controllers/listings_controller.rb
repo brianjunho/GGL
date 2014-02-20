@@ -38,7 +38,7 @@ class ListingsController < ApplicationController
 
     begin
       charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor, # need to figure out word count
+        :amount => (@listing.application.scan(/[\w-]+/).size * 0.35 * 100).floor, # need to figure out word count
         :currency => "usd",
         :card => token
         )

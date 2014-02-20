@@ -3,11 +3,45 @@
 <p><b>About</b></p>
 <p>Gaigaile is an online proofreading platform made specifically for Chinese students looking for high-quality and affordable proofreading for their overseas university application essays.</p>
 <p><b>How it Works</b></p>
+<p>Have something that needs to be proofread? You can quickly place a listing to have your text proofread via our simple website. Then, our platform springs into action; users who are qualified to proofread on Gaigaile can search available listings and can provide edits and comments within minutes. Soon, you'll have your edited and reviewed text back in your hands, ready to be used for whatever you need. Users approve the quality of the proofreading before any payment is ever made, ensuring the highest quality reviews and removing any issues of insecurity. Get started today by clicking the link below!</p>
 <p><b>Pricing</b></p>
-<br>
-  <div class="col-md-2">
-    <%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %>
-  </div>
+<p>Our affordable pricing strategy is as such:</p>
+<div class="row">
+	<div class="col-md-6">
+		<table class="table table-bordered">
+		  <tr>
+		  	<th class="center">Word Count</th>
+		  	<th class="center">Proofreading</th>
+		  	<th class="center">Proofreading + Commenting</th>
+		  	<th class="center">Cost*</th>
+		  </tr>
+		  <tr>
+		  	<td>0-1099</td>
+		  	<td>$0.33/word</td>
+		  	<td>$0.66/word</td>
+		  	<td rowspan="2" align="center">5%</td>
+		  </tr>
+		  <tr>
+		  	<td>1100-2099</td>
+		  	<td>$0.30/word</td>
+		    <td>$0.60/word</td>
+		  	
+		  </tr>
+		</table>
+	</div>
+</div>
+		<p>*Percentage that Gaigaile will charge for each completed job</p>
+	
+
+  <% if user_signed_in? %>
+	  <div class="col-md-2">
+	    <%= link_to "Get Started", new_listing_path, class: "btn btn-info btn-lg btn-block" %>
+	  </div>
+  <% else %>
+  	  <div class="col-md-2">
+	    <%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %>
+	  </div>
+  <% end %>
   <br><br>
   <br><br>
 

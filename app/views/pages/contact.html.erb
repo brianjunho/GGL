@@ -1,7 +1,32 @@
-<h1>Contact</h1>
-<h3>Email us at abc@example.com</h3>
-<p><b>FAQ Section</b></p>
+<html>
+  <body>
+  <script>
+		  	function toggleElement(id)
+		{
+		    if(document.getElementById(id).style.display == 'none')
+		    {
+		        document.getElementById(id).style.display = '';
+		    }
+		    else
+		    {
+		        document.getElementById(id).style.display = 'none';
+		    }
+		}
+   </script>
 
-asdf
+<h1>Contact</h1>
+<h5>Email us at abc@example.com</h5>
+<p><b>FAQ Section</b></p>
+<p><a href="javascript:toggleElement('a1')">Is this a question?</a></p>
+<div id="a1" style="display:none">
+This is an answer.
+</div>
+<p><a href="javascript:toggleElement('a2')">How about this?</a></p>
+<div id="a2" style="display:none">
+Yes also a question.
+</div>
+
+
+
 <br>
 <br>

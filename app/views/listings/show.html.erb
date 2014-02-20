@@ -6,8 +6,15 @@
     <div class="col-md-6">
 		<h4><strong>Essay Type: </strong><%= @listing.name %></h4>
 		<p><strong>Prompt: </strong><%= @listing.prompt %></p>
-		<p><strong>Pricing Option: </strong><%= @listing.option %></p><br>
-		<p><strong>Price: </strong>$XXX</p>
+		<!-- <p><strong>Pricing Option: </strong><%= @listing.option %></p> -->
+        <br>
+        <% if @listing.option == "0" %>
+    		<p><strong>Word Count: </strong><%= @listing.application.scan(/[\w-]+/).size %></p>
+            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.33) %></p>
+        <% else %>
+            <p><strong>Word Count: </strong><%= @listing.application.scan(/[\w-]+/).size %></p>
+            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.50) %></p>
+        <% end %>
         <br>
         <% if current_user != @listing.user %>
             <div class="center">
