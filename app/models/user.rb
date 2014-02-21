@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_uniqueness_of :name
   validates :name, presence: true
   has_many :listings, dependent: :destroy
   has_many :requests, class_name: "Edit", foreign_key: "requester_id"
