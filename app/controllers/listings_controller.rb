@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:requester, :index, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
+  before_filter :check_status, only: [:edit]
 
   def requested
     @listings = Listing.where(user: current_user).order("created_at DESC")
@@ -33,6 +34,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
+    @listing.check = false
 
     if @listing.option == "0" # basic proofread
         if @listing.word_count < 1100
@@ -99,5 +101,12 @@ class ListingsController < ApplicationController
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
+
+    def check_status
+      if !@listing.edit.nil?
+        redirect_to root_url, alert: "Sorry, this listing has already been proofread"
+      end
+    end
+
     
 end

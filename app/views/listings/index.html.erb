@@ -1,16 +1,15 @@
-<h1>All Listings</h1>
+<h1>Browse Listings</h1>
 
 
-  <table class="table table-bordered table-striped table-hover">
+  <table class="table table-bordered table-striped">
     <tr>
         <th class="center">Requester</th>
         <th class="center">Name</th>
         <th class="center">Prompt</th>
         <th class="center">Option</th>
-        <td class="center">Price</th>
-        <th class="center"></th>
-       
-      </tr>
+        <th class="center">Price</th>
+        <th class="center">Status</th>
+    </tr>
       
     <% @listings.each do |listing| %>
       <tr>
@@ -26,21 +25,18 @@
           <% end %>
         </td>
         <td><%= number_to_currency(listing.price) %></td>
-        <% if @edit == nil %>
-            <td><%= link_to 'Open Job', listing, class: "btn btn-primary" %></td>
-        <% else %>
-            <td>Closed</td>
-        <% end %>
+        <td>
+          <% if !listing.edit.nil? %>
+            <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %></p>
+          <% else %>
+            <p><%= link_to 'Available', listing, class: "btn btn-primary" %></p>
+          <% end %>
+        </td>
       </tr>
-  <% end %>    
+    <% end %>    
   </table>
   
-  <ul class="pager">
-    <li class="previous"><a href="#">&larr; Older</a></li>
-    <li class="next"><a href="#">Newer &rarr;</a></li>
-  </ul>
 
-<br>
 
 <% if user_signed_in? %>
   <%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: { no_turbolink: true } %>

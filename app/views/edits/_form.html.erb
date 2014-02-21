@@ -21,20 +21,8 @@
           <% else %>
             Proofread and Comments
           <% end %></p>
+       <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
        
-        <% if @listing.option == "0" %>
-            <% if @listing.word_count < 1100 %>
-                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.33) %></p>
-            <% else %>
-                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.30) %></p>
-            <% end %>
-        <% else %>
-            <% if @listing.word_count < 1100 %>
-                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.66) %></p>
-            <% else %>
-                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.60) %></p>
-            <% end %>
-        <% end %>
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -55,12 +43,13 @@
               <% end %>
         
         </div>
+          <div class="form-group">
+        <%= f.submit "Complete Edit", class: "btn btn-success" %>
+      </div>
      </div>
      </div>  
 
-      <div class="form-group">
-        <%= f.submit "Complete Edit", class: "btn btn-success" %>
-      </div>
+    
   
-    <br><br><br>
+    <br>
 <% end %>

@@ -8,8 +8,7 @@ GGL::Application.routes.draw do
   get "pages/about"
   get "pages/contact"
   get 'requested' => "listings#requested"
-  get 'tasks' => "edits#tasks"
-  get 'completed' => "edits#completed"
+  get 'profile' => "edits#profile"
 
   root 'pages#home'
 

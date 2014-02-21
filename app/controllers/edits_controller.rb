@@ -3,15 +3,10 @@ class EditsController < ApplicationController
   before_action :authenticate_user!
   before_filter :check_user, only: [:show]
  
-  def tasks
-    @edits = Edit.all.where(requester: current_user).order("created_at DESC")
+  def profile
   end
-
-  def completed
-    @edits = Edit.all.where(editor: current_user).order("created_at DESC")
-  end
-
-  # GET /edits
+ 
+    # GET /edits
   # GET /edits.json
   def index
     @edits = Edit.all
@@ -38,10 +33,11 @@ class EditsController < ApplicationController
     @edit.listing_id = @listing.id
     @edit.editor_id = current_user.id
     @edit.requester_id = @requester.id
+    @listing.check = true
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to completed_path, notice: 'Edit was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Edit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -63,7 +59,7 @@ class EditsController < ApplicationController
     end
 
     def check_user
-      if current_user != (@edit.editor || @listing.user)
+      if !((current_user == @edit.requester) || (current_user == @edit.editor))
         redirect_to root_url, alert: "Sorry, this belongs to someone else. Let's go somewhere else!"
       end
     end
