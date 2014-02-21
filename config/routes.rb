@@ -1,13 +1,13 @@
 GGL::Application.routes.draw do
   devise_for :users
   resources :listings do
-    resources :edits
+    resources :edits, only: [:new, :create, :show]
   end
 
   get "pages/home"
   get "pages/about"
   get "pages/contact"
-  get 'requester' => "listings#requester"
+  get 'requested' => "listings#requested"
   get 'tasks' => "edits#tasks"
   get 'completed' => "edits#completed"
 

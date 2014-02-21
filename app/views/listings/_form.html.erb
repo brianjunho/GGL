@@ -26,55 +26,24 @@
     <%= f.label :application %><br>
     <%= f.text_area :application, placeholder: "Paste application here", class: "form-control" %>
   </div>
-    <div class= "row">
-    <div class="col-md-2">
+    
   <div class="form-group">
     <b>Payment </b><%= f.label :option %><br>
-    <p>0. Basic Proofread</p>
-    <p>1. With Comments</p>
+    <p><b>0</b>. Basic Proofread</p>
+    <p><b>1</b>. With Comments</p>
+    <div class= "row">
+    <div class="col-md-1">
     <%= f.text_field :option, placeholder: "Select Pricing Plan", class: "form-control" %>
     </div>
   </div>
 </div>
 
-    <div class="divider"></div>
-  <br>
-  <h1>Payment Information</h1>
-  <p>Card will be charged later (See pricing in next page)</p>
-  <div class= "row">
-    <div class="col-md-6">
-  <div class="form-group">
-    
-        
-          <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control" } %>
-       </div>
-         <div class="form-group">
-          <%= label_tag :card_code, "CVC" %>
-          <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
-        
-      
-  </div>
-  <div class="form-group">
-     <%= label_tag nil, "Expiration Date" %>
-      <div class="row">
-        <div class="col-md-3">
-          <%= select_month nil, { use_two_digit_numbers: true }, { :name => nil, :'data-stripe' => "exp-month", class: "form-control" } %>
-        </div>
-        <div class="col-md-3">
-          <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
-        </div>
-    </div>
-  </div>
-</div>
-</div>
+
 
 
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 
-  <div id="stripe_error" class="alert alert-danger" style="display:none">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
+ 
 <% end %>

@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   before_filter :authenticate_user!, only: [:requester, :index, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
-  def requester
+  def requested
     @listings = Listing.where(user: current_user).order("created_at DESC")
   end
 
@@ -32,21 +32,22 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
+    @listing.word_count = @listing.application.scan(/[\w-]+/).size
 
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
-    token = params[:stripeToken]
-
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.application.scan(/[\w-]+/).size * 0.35 * 100).floor, # need to figure out word count
-        :currency => "usd",
-        :card => token
-        )
-      flash[:notice] = "Thanks for ordering!"
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
+    if @listing.option == "0" # basic proofread
+        if @listing.word_count < 1100
+                @listing.price = @listing.word_count * 0.33
+        else
+                @listing.price = @listing.word_count * 0.30
+        end
+    else
+        if @listing.word_count < 1100 # with comments
+                @listing.price = @listing.word_count * 0.66
+        else
+                @listing.price = @listing.word_count * 0.60
+        end
     end
-    
+     
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
@@ -77,7 +78,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url }
+      format.html { redirect_to requester_url }
       format.json { head :no_content }
     end
   end

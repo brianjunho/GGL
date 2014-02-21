@@ -12,20 +12,28 @@
     </div>
   <% end %>
 
-  <div id="stripe_error" class="alert alert-danger" style="display:none">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
-
   <div class="row">
     <h4><strong>Essay Type: </strong><%= @listing.name %></h4>
     <p><strong>Prompt: </strong><%= @listing.prompt %></p>
-    <p><strong>Pricing Option: </strong><%= @listing.option %></p>
-    <% if @listing.option == "0" %>
-        
-            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.33) %></p>
+    <p><strong>Pricing Option: </strong>
+        <% if @listing.option == "0" %>
+              Basic Proofread
+          <% else %>
+            Proofread and Comments
+          <% end %></p>
+       
+        <% if @listing.option == "0" %>
+            <% if @listing.word_count < 1100 %>
+                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.33) %></p>
+            <% else %>
+                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.30) %></p>
+            <% end %>
         <% else %>
-            
-            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.50) %></p>
+            <% if @listing.word_count < 1100 %>
+                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.66) %></p>
+            <% else %>
+                <p><strong>Price: </strong><%= number_to_currency(@listing.word_count * 0.60) %></p>
+            <% end %>
         <% end %>
   </div>
   <div class="row">
@@ -37,7 +45,7 @@
         <div class="form-group">
         <p><strong>Proofread Version: </strong></p>
         <!-- <%= f.label :proofread %> -->
-        <%= f.text_area :proofread, rows: "25", placeholder: "Write edits here", class: "form-control" %>
+        <%= f.text_area :proofread, rows: @listing.word_count/10, placeholder: "Write edits here", class: "form-control" %>
       </div>
        <div class="form-group">
           <% if @listing.option == "1" %>
@@ -49,24 +57,7 @@
         </div>
      </div>
      </div>  
-     <br><br>
-     <h3>Bank Account Information</h3>
-    
-   
-    <div class="row">
-        <div class="form-group">
-        <%= label_tag :country %>
-        <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
-       </div>
-        <div class="form-group">
-          <%= label_tag :routing_number %>
-          <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :account_number %>
-          <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
-        </div>
-     </div>
+
       <div class="form-group">
         <%= f.submit "Complete Edit", class: "btn btn-success" %>
       </div>

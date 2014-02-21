@@ -1,5 +1,5 @@
 GEM
-  remote: http://code.stripe.com/
+  remote: https://code.stripe.com/
   remote: https://rubygems.org/
   specs:
     actionmailer (4.0.2)

@@ -6,7 +6,7 @@
 
 <p>Attach stats (number of listings, number of jobs completed, rankings, reviews)</p>
 
-  <table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th class="center">Document Type</th>
@@ -24,11 +24,9 @@
           <td class="center"><%= edit.listing.name %></td>
           <td class="center"><%= edit.requester.name %></td>
           <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
-           <td class="center">Still need to calculate</td>
-           <td class="form-group"><%= link_to "View Order", listing_edit_path([@edit.listing_id, @edit]), class: "btn btn-primary" %></td>
-           
-          
-                </tr>
+           <td class="center"><%= edit.listing.price %></td>
+           <td class="center form-group"><%= link_to 'View Proofread', listing_edit_path(edit, edit), class: "btn btn-success" %></td>           
+        </tr>
       <% end %>
     </tbody>
   </table>

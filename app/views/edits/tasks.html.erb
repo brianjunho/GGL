@@ -23,12 +23,7 @@
           <td class="center"><%= edit.listing.prompt %></td>
           <td class="center"><%= edit.editor.name %></td>
           <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
-            
-           <td class="form-group"><%= link_to "View Order", listing_edit_path([@listing, @edit]) %></td>
-           
-            
-         
-          
+          <td class="center form-group"><%= link_to "View Proofread", listing_edit_path(edit, edit), class: "btn btn-success" %></td>
         </tr>
       <% end %>
     </tbody>

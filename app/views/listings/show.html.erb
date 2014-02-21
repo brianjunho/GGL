@@ -6,26 +6,27 @@
     <div class="col-md-6">
 		<h4><strong>Essay Type: </strong><%= @listing.name %></h4>
 		<p><strong>Prompt: </strong><%= @listing.prompt %></p>
-		<!-- <p><strong>Pricing Option: </strong><%= @listing.option %></p> -->
-        <br>
         <% if @listing.option == "0" %>
-    		<p><strong>Word Count: </strong><%= @listing.application.scan(/[\w-]+/).size %></p>
-            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.33) %></p>
+		  <p><strong>Pricing Option: </strong>Basic Proofread</p>
         <% else %>
-            <p><strong>Word Count: </strong><%= @listing.application.scan(/[\w-]+/).size %></p>
-            <p><strong>Price: </strong><%= number_to_currency(@listing.application.scan(/[\w-]+/).size * 0.50) %></p>
+          <p><strong>Pricing Option: </strong>Proofread and Comments</p>
         <% end %>
         <br>
-        <% if current_user != @listing.user %>
-            <div class="center">
-          <%= link_to "Edit Now", new_listing_edit_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
-            </div>
-        <% end %>
+        <p><strong>Word Count: </strong><%= @listing.word_count %></p>
+        <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+      
+        <br>
+       
     </div>
     
 </div>
 
 <% if current_user == @listing.user %>
     <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
-<% end %>
+<% else %>
+        <div class="center">
+        <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %>
+            </div>
+        <% end %>
+
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>

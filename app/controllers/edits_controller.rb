@@ -1,7 +1,8 @@
 class EditsController < ApplicationController
   before_action :set_edit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  before_filter :check_user, only: [:show]
+ 
   def tasks
     @edits = Edit.all.where(requester: current_user).order("created_at DESC")
   end
@@ -19,7 +20,6 @@ class EditsController < ApplicationController
   # GET /edits/1
   # GET /edits/1.json
   def show
-    @listing = Listing.find(params[:listing_id])
   end
 
   # GET /edits/new
@@ -61,4 +61,11 @@ class EditsController < ApplicationController
     def edit_params
       params.require(:edit).permit(:proofread, :comments)
     end
+
+    def check_user
+      if current_user != (@edit.editor || @listing.user)
+        redirect_to root_url, alert: "Sorry, this belongs to someone else. Let's go somewhere else!"
+      end
+    end
+
 end
