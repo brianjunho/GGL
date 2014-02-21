@@ -1,11 +1,22 @@
-<div class="center">
-  <h1>Your Job History /(Profile page?)</h1>
+<div class="row">
+  <div class="thumbnail col-md-2">
+    <p><%= link_to image_tag(current_user.avatar.url(:medium)), edit_user_registration_path %></p>
+  </div>
+  <div class="col-md-4">
+      <h3><strong><%= current_user.name %></strong></h3>
+      <p>Last online: <%= current_user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
+  </div>
+  <div class="col-md-3">
+      <h3></h3>
+      <p><strong>Number of Listings: </strong></p>
+      <p><strong>Number of Jobs Completed: </strong></p>
+  </div>
 </div>
 
-<p>Attach image here</p>
 
-<p>Attach stats (number of listings, number of jobs completed, rankings, reviews)</p>
+<p>Attach stats (rankings, reviews)</p>
 
+<h3>Your Job History</h3>
 <table class="table table-bordered table-striped">
     <thead>
       <tr>
