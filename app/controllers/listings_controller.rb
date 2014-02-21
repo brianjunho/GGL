@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
-    @listing.check = false
+    
 
     if @listing.option == "0" # basic proofread
         if @listing.word_count < 1100

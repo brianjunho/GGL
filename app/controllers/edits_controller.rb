@@ -33,7 +33,7 @@ class EditsController < ApplicationController
     @edit.listing_id = @listing.id
     @edit.editor_id = current_user.id
     @edit.requester_id = @requester.id
-    @listing.check = true
+    
 
     respond_to do |format|
       if @edit.save
