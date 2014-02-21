@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :name %>
+    <p><b>Create a Username</b></p>
     <%= f.text_field :name, :autofocus => true, class: "form-control" %>
   </div>
 
@@ -16,10 +16,6 @@
 
   <div class="form-group"><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: "form-control" %></div>
-
-  <div class="form-group"><p><b>Upload Profile Image</b></p>
-    <%= f.file_field :avatar, class: "form-control" %>
-  </div>
 
   <div class="form-group"><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
