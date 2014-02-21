@@ -1,15 +1,19 @@
 GGL::Application.routes.draw do
-  devise_for :users
   
-  resources :listings do
+  devise_for :users
+  resources :users, only: [:show]
+  
+    resources :listings do
     resources :edits, only: [:new, :create, :show]
   end
 
   get "pages/home"
   get "pages/about"
   get "pages/contact"
-  get 'requested' => "listings#requested"
-  get 'profile' => "edits#profile"
+  get 'requests' => "listings#requests"
+  get 'profile' => 'users#show'
+
+
 
   root 'pages#home'
 

@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
+  validates_uniqueness_of :name
+  validates_length_of :name, maximum: 32
+  validates_exclusion_of :name, in: ['www', 'mail', 'ftp']
   has_many :listings, dependent: :destroy
   has_many :requests, class_name: "Edit", foreign_key: "requester_id"
   has_many :edits, class_name: "Edit", foreign_key: "editor_id"
