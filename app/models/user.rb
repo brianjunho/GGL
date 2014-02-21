@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	
-    has_attached_file :avatar, :styles => { :medium => "200x", :thumb => "200x200>" }, :default_url => "https://dl.dropboxusercontent.com/s/dg0tkzo002cvsf1/Default.png"
+    has_attached_file :avatar, :styles => { :medium => "200x", :thumb => "200x200>" }, :default_url => "https://dl.dropboxusercontent.com/s/default%20%281%29.png",
+    :storage => :dropbox,
+      :dropbox_credentials => Rails.root.join("config/dropbox.yml")
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
