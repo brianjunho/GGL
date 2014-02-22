@@ -80,7 +80,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to requester_url }
+      format.html { redirect_to requests_url }
       format.json { head :no_content }
     end
   end
