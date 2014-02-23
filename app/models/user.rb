@@ -21,4 +21,6 @@ class User < ActiveRecord::Base
   has_many :edits, class_name: "Edit", foreign_key: "editor_id"
   has_many :reviewsmade, class_name: "Review", foreign_key: "reviewee_id"
   has_many :reviewsgiven, class_name: "Review", foreign_key: "reviewer_id"
+  acts_as_liker
+  acts_as_likeable
 end

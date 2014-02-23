@@ -3,9 +3,7 @@ class EditsController < ApplicationController
   before_action :authenticate_user!
   before_filter :check_user, only: [:show]
  
-  def profile
-  end
- 
+  
     # GET /edits
   # GET /edits.json
   def index

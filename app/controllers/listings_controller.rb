@@ -1,8 +1,8 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:requester, :index, :new, :create, :edit, :update, :destroy]
-  before_filter :check_user, only: [:edit, :update, :destroy]
-  before_filter :check_status, only: [:edit]
+  before_filter :authenticate_user!, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:show, :edit, :update, :destroy]
+  before_filter :check_status, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
@@ -93,16 +93,16 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if current_user != @listing.user
+      if (current_user != @listing.user) && (!current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
 
     def check_status
-      if !@listing.edit.nil?
-        redirect_to root_url, alert: "Sorry, this listing has already been proofread"
-      end
-    end
+        if !@listing.edit.nil?
+          redirect_to root_url, alert: "Sorry, this listing has already been proofread"
+        end
+     end
 
     
 end
