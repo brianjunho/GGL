@@ -29,8 +29,10 @@
 
     
     <% if user_signed_in? %>
-      <div class="col-md-3"></div>
-      <div class="col-md-6"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
+      <% if !current_user.try(:admin?) %>
+        <div class="col-md-3"></div>
+        <div class="col-md-6"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
+        <% end %>
 
     <% else %>
       <div class="col-md-2"></div>

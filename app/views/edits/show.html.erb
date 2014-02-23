@@ -6,7 +6,10 @@
               Basic Proofread
           <% else %>
             Proofread and Comments
-          <% end %></p>   
+          <% end %></p> 
+      <p><% if current_user == @edit.listing.user  %>       
+            <%= link_to "Provide Rating and Review", pages_home_path, class: "btn btn-default" %>
+        <% end %></p>
   </div>
   <div class="row">
     <div class="col-md-6">
@@ -22,8 +25,7 @@
           <% if @edit.listing.option == "1" %>
                 <p><strong>Comments: </strong><%= @edit.comments %></p>
           <% end %>
-        
-        </div>
+       </div>
      </div>
      </div>  
   
