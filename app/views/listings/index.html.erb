@@ -39,10 +39,7 @@
       
 
 
-    <% if user_signed_in? %>
-      <%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: { no_turbolink: true } %>
-    <% end %>
-<% else %>
+    <% else %>
   <script type="text/javascript">
         window.location.href="/requests"  
   </script>
