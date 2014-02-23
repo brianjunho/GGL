@@ -10,37 +10,13 @@
       <h3></h3>
       <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', current_user] %></p>
       <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', current_user] %></p>
-       <p class="form-group"><%= link_to 'Manage Requests', requests_path, class: "btn btn-primary" %></p>
-        <p class="form-group"><%= link_to 'Create Listing', new_listing_path, class: "btn btn-primary" %></p>
   </div>
-</div>
+</div> 
 
 
 <p>Attach stats (Reviews)</p>
 
-<div class="row">
-  <div class="col-md-6">
-    <h3>Your Completed Requests</h3>
-    <table class="table table-bordered table-striped">
-   
-      <tr>
-        <th class="center">Document Type</th>
-        <th class="center">Editor</th>
-        <th class="center">Date Completed</th>
-        <th class="center">Actions</th>        
-      </tr>
-    
-      <% Edit.all.where(requester: current_user).order("created_at DESC").each do |edit| %>
-        <tr>
-          <td class="center"><%= edit.listing.name %></td>
-          <td class="center"><%= edit.editor.name %></td>
-          <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
-          <td class="center form-group"><%= link_to "View", listing_edit_path(edit, edit), class: "btn btn-success" %></td>
-        </tr>
-      <% end %>
-      
-    </table>
-  </div>
+
   <div class="col-md-6">
     <h3>Your Job History</h3>
     <table class="table table-bordered table-striped">

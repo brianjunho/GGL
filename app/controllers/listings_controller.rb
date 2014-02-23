@@ -35,7 +35,7 @@ class ListingsController < ApplicationController
     @listing.user_id = current_user.id
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
     
-
+    # pricing
     if @listing.option == "0" # basic proofread
         if @listing.word_count < 1100
                 @listing.price = @listing.word_count * 0.33

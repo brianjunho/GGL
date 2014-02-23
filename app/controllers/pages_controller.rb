@@ -11,4 +11,6 @@ class PagesController < ApplicationController
   def pricing
   end
 
+  def team
+  end
 end

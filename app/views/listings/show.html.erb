@@ -14,7 +14,7 @@
         <br>
         <p><strong>Word Count: </strong><%= @listing.word_count %></p>
         <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
-      
+        
         <br>
         <% if current_user != @listing.user %>       
             <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %>

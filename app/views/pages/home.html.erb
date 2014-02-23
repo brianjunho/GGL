@@ -5,7 +5,7 @@
 
 <div class="jumbotron">
     <h1><b>顶级校对服务</b></h1>
-    <h2>Crowdsourced Online Proofreading</h2>
+    <h2>Affordable and High Quality Proofreading</h2>
     <p>Professional, people-powered proofreading in one click</p>
     
 </div>
@@ -27,11 +27,13 @@
   </div>
   <div class="row">
 
-    <div class="col-md-2"></div>
+    
     <% if user_signed_in? %>
-      <div class="col-md-4"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
-      <div class="col-md-4"><%= link_to "Browse Jobs", listings_path, class: "btn btn-success btn-lg btn-block" %></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
+
     <% else %>
+      <div class="col-md-2"></div>
       <div class="col-md-4"><%= link_to "Learn More", pages_about_path, class: "btn btn-info btn-lg btn-block" %></div>
       <div class="col-md-4"><%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %></div>
     <% end %>

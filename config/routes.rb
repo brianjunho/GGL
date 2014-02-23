@@ -10,6 +10,7 @@ GGL::Application.routes.draw do
   get "pages/home"
   get "pages/about"
   get "pages/pricing"
+  get "pages/team"
   get "pages/contact"
   get 'requests' => "listings#requests"
   get 'dashboard' => 'users#show'

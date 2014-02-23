@@ -1,8 +1,13 @@
-<h1>All Users</h1>
-<p>Go to .../user/user_name to view profiles</p>
-<% @user.each do |user| %>
-  <%= user.name %>
-  <%= user.id %>
-  <%= user.email %><br/>
+<% if user_signed_in? && current_user.try(:admin?) %>
+	<h1>All Users</h1>
+	  <% @user.each do |user| %>
+	  <%= user.name %>
+	  <%= user.id %>
+	  <%= user.email %><br/>
+	<% end %>
+<% else %>
+	<script type="text/javascript">
+    	window.location.href="/dashboard"  
+    </script>
 <% end %>
-<br>
+

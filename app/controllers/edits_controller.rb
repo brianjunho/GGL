@@ -37,7 +37,7 @@ class EditsController < ApplicationController
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to profile_path, notice: 'Edit was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Edit was successfully created.' }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }

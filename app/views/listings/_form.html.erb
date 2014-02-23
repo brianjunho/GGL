@@ -14,9 +14,18 @@
 
   <div class="form-group">
     <b><p>What is the essay type?</p></b>
-    <p class="help-block">(ie. Personal Statement, Resume, Sample Writing, etc)</p>
-    <%= f.text_field :name, placeholder: "Enter type of document", class: "form-control" %>
-  </div>
+    <%= f.radio_button :name, 'Application' %>
+    <%= f.label :name, 'Personal Statement', :value => 'Personal Statement' %><br>
+    <%= f.radio_button :name, 'Resume' %>
+    <%= f.label :name, 'Resume', :value => 'Resume' %><br>
+    <%= f.radio_button :name, 'Sample Writing' %>
+    <%= f.label :name, 'Sample Writing', :value => 'Sample Writing' %><br>
+     <%= f.radio_button :name, 'Report' %>
+    <%= f.label :name, 'Report', :value => 'Report' %><br>
+     <%= f.radio_button :name, 'Translation' %>
+    <%= f.label :name, 'Translation', :value => 'Translation' %>
+   
+   </div>
   <div class="form-group">
     <%= f.label :prompt %><br>
     <p class="help-block">What is the essay topic?</p>
@@ -28,14 +37,12 @@
   </div>
     
   <div class="form-group">
-    <b>Payment </b><%= f.label :option %><br>
-    <p><b>0</b>. Basic Proofread</p>
-    <p><b>1</b>. With Comments</p>
-    <div class= "row">
-    <div class="col-md-1">
-    <%= f.text_field :option, placeholder: "Select Pricing Plan", class: "form-control" %>
-    </div>
-  </div>
+    <p><b>Select Option</b></p>
+    <%= f.radio_button :option, '0' %>
+    <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %><br>
+    <%= f.radio_button :option, '1' %>
+    <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
+    
 </div>
 
 
