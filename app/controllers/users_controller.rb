@@ -9,15 +9,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def view_logged_in
+    @user = User.all
+
   end
 
   def view_logged_out
     @user = User.find(params[:id])
-     respond_to do |format|
-        format.html # show.html.erb
-        format.xml { render :xml => @user }
-    end
   end
   
 end

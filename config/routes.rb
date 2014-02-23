@@ -1,11 +1,14 @@
 GGL::Application.routes.draw do
   
   devise_for :users
-  resources :users
+  resources :users, only: [:view_logged_out, :view_logged_in, :index] do
+    resources :reviews 
+  end
   
     resources :listings do
-    resources :edits, only: [:new, :create, :show]
-  end
+      resources :edits, only: [:new, :create, :show]
+      end
+   
 
   get "pages/home"
   get "pages/about"
@@ -13,11 +16,9 @@ GGL::Application.routes.draw do
   get "pages/team"
   get "pages/contact"
   get 'requests' => "listings#requests"
-  get 'dashboard' => 'users#show'
-  get 'user/:id' => 'users#view_logged_out'
-
-
-
+  get 'dashboard' => 'users#view_logged_in'
+  get 'users/:id' => 'users#view_logged_out'
+  
   root 'pages#home'
 
 

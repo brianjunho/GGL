@@ -39,12 +39,10 @@
        -->
         <ul class="nav navbar-nav navbar-right">
            <% if user_signed_in? %>
-              <% if !current_user.try(:admin?) %>
-                <li><%= link_to "Manage Requests", requests_path %></li>  
-              <% else %>                
-                <li><%= link_to "Dashboard", dashboard_path %></li>
-              <% end %>
-              <li class="dropdown">
+              
+                <li><%= link_to "Dashboard", dashboard_path %></li>  
+                              
+                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   

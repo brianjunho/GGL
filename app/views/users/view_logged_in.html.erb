@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="thumbnail col-md-2">
+    <%= link_to image_tag(current_user.avatar.url(:medium)), edit_user_registration_path %>
+  </div>
+  <div class="col-md-4">
+      <h3><strong><%= current_user.name %></strong></h3>
+      <p>User ID: <%= current_user.id %></p>
+      <p>Last online: <%= current_user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
+      <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
+  </div>
+  <div class="col-md-3">
+      <h3></h3>
+      <% if user_signed_in? && !current_user.try(:admin?) %>
+        <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', current_user] %></p>
+      <%= link_to 'New Listing', new_listing_path, class: "btn btn-primary" %>
+      <% else %>
+        <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', current_user] %></p>
+        <%= link_to 'Browse Listings', listings_path, class: "btn btn-primary" %>
+        <% end %>
+        <br><br>
+        <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]) %></p>
+          
+       
+  </div>
+</div> 
+
+<% if user_signed_in? && !current_user.try(:admin?) %>
+  <h1>My Requests</h1>
+
+
+  <table class="table table-bordered table-striped">
+    
+      <tr>
+        <th class="center">Date Requested</th>
+        <th class="center">Name</th>
+        <th class="center">Prompt</th>
+        <th class="center">Status</th>
+        <th class="center"></th>
+           
+        <th class="center">Action</th>
+      </tr>
+       
+      <% Listing.all.where(user: current_user).order("created_at DESC").each do |listing| %>
+        <tr>
+          <td class="center"><%= listing.updated_at.strftime("%B %-d, %Y") %></td>
+          <td class="center"><%= listing.name %></td>
+          <td class="center"><%= listing.prompt %></td>
+          <% if !listing.edit.nil? %>
+            <td class="center">Completed by <%= listing.edit.editor.name %></td>           
+            <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.editor), class: "btn btn-link" %></td>
+            <td>
+              <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Action <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'View', listing_edit_path(listing.edit, listing.edit), class: "btn btn-link" %></li>
+                <li><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></li>
+            </td>
+          <% else %>
+            <td class="center">Pending</td>
+            <td></td>
+            <td>
+              <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Action <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'View', listing, class: "btn btn-link" %></li>
+                <li><%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %></li>
+                <li><%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></li>
+            </td>
+          <% end %>        
+          
+        </tr>
+      <% end %>
+    
+  </table>
+<% elsif user_signed_in? && current_user.try(:admin?) %> 
+
+     <h3>Your Job History</h3>
+    <table class="table table-bordered table-striped">
+          
+            <tr>
+              <th class="center">Document Type</th>
+              <!-- <th class="center">Requester</th> -->
+              <th class="center">Date Edited</th>
+              <th class="center">Give Feedback</th>
+              <th class="center">Money made</th>
+              <th class="center"></th>
+              
+            </tr>
+          
+
+          
+            <% Edit.all.where(editor: current_user).order("created_at DESC").each do |edit| %>
+              <tr>
+                <td class="center"><%= edit.listing.name %></td>
+<!--                <td class="center"><%= edit.requester.name %></td> -->
+                <td class="center"><%= edit.created_at.strftime("%B %-d, %Y") %></td>
+                <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.requester), class: "btn btn-link" %></td>
+                 <td class="center"><%= number_to_currency(edit.listing.price) %></td>
+                 <td class="center form-group"><%= link_to 'View', listing_edit_path(edit, edit), class: "btn btn-success" %></td>        </tr>
+            <% end %>
+          
+        </table>
+<% end %>
+    
+
+  
+ 
+<br>
+
+
+  

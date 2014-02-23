@@ -3,4 +3,5 @@ class Edit < ActiveRecord::Base
 	belongs_to :listing
 	belongs_to :editor, class_name: "User"
 	belongs_to :requester, class_name: "User"
+	has_one :review
 end

@@ -1,5 +1,34 @@
-<h1>Public Profile</h1>
-<%= @user.username %>
+<div class="row">
+	<div class="col-md-2">
+		  <div class="thumbnail">
+		    <%= image_tag @user.avatar.url(:medium) %>
+		  </div>
+		</div>
+
+  <div class="col-md-4">
+      <h3><strong><%= @user.name %></strong></h3>
+      <p>User ID: <%= @user.id %></p>
+      <p>Last online: <%= @user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
+      <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
+  </div>
+  <div class="col-md-3">
+      <h3></h3>
+      <% if !@user.try(:admin?) %>
+        <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', @user] %></p>
+       <% else %>
+        <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', @user] %></p>
+       
+        <% end %>
+        <br>
+        
+          <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]) %></p>
+          
+    </div>
+    <div class="col-md-4"></div>
+</div> 
+
+
+
 
 
 

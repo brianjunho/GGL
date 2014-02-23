@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221135058) do
+ActiveRecord::Schema.define(version: 20140223053741) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20140221135058) do
 
   add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
   add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
+
+  create_table "reviews", force: true do |t|
+    t.decimal  "rating"
+    t.text     "statement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "reviewee_id"
+    t.integer  "reviewer_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

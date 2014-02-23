@@ -4,10 +4,6 @@ class ListingsController < ApplicationController
   before_filter :check_user, only: [:edit, :update, :destroy]
   before_filter :check_status, only: [:edit]
 
-  def requests
-    @listings = Listing.where(user: current_user).order("created_at DESC")
-  end
-
   # GET /listings
   # GET /listings.json
   def index
