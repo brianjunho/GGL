@@ -17,7 +17,7 @@ GGL::Application.routes.draw do
   get "pages/contact"
   get 'requests' => "listings#requests"
   get 'dashboard' => 'users#view_logged_in'
-  get 'users/:id' => 'users#view_logged_out'
+  get 'users/:name' => 'users#view_logged_out'
   
   root 'pages#home'
 

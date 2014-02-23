@@ -21,7 +21,8 @@
         <% end %>
         <br>
         
-          <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]) %></p>
+          <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]).round(2) %></p>
+          <p><%= link_to 'Rate', new_user_review_path(@user), class: "btn btn-primary" %></td>
           
     </div>
     <div class="col-md-4"></div>
