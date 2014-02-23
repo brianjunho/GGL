@@ -1,13 +1,14 @@
-<% if user_signed_in? && current_user.try(:admin?) %>
+<!-- <% if user_signed_in? && current_user.try(:admin?) %> -->
 	<h1>All Users</h1>
 	  <% @user.each do |user| %>
 	  <%= user.name %>
 	  <%= user.id %>
-	  <%= user.email %><br/>
+	  <%= user.email %>
+	  <%= user.admin %><br/>
 	<% end %>
-<% else %>
+<!-- <% else %>-->
 	<script type="text/javascript">
     	window.location.href="/dashboard"  
     </script>
-<% end %>
+<!-- <% end %> -->
 
