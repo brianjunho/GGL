@@ -22,7 +22,7 @@
         <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', @user] %></p>
        <% end %>
                 
-          <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]).round(2) %></p>
+          <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]) %></p>
           <% if current_user != @user %>    
           <p><%= link_to 'Rate Me', new_user_review_path(@user), class: "btn btn-primary" %></p>
           <% end %>
