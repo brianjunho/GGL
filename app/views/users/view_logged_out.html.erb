@@ -8,10 +8,10 @@
   <div class="col-md-4">
       <h3><strong><%= @user.name %></strong></h3>
       <p>User ID: <%= @user.id %></p>
-       <% if current_user.try(:admin?) %>
+       <% if @user.try(:admin?) %>
         <p>Admin</p>
       <% else %>
-        <% if current_user.try(:editor?) %>
+        <% if @user.try(:editor?) %>
           <p>Editor</p>
         <% end %>
       <% end %>
@@ -29,10 +29,10 @@
         <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', @user] %></p>
        <% end %>
        <br><br>
-         <% if (Review.count :conditions => ['reviewee_id = ?', current_user]) == 0 %>
+         <% if (Review.count :conditions => ['reviewee_id = ?', @user]) == 0 %>
             <p><strong>Rating: </strong>N/A</p>
           <% else %>
-            <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]) %></p>
+            <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]) %></p>
           <% end %>
 
     </div>
