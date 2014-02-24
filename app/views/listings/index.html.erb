@@ -11,7 +11,7 @@
             <th class="center">Price</th>
             <th class="center">Status</th>
         </tr>
-          
+           
         <% @listings.each do |listing| %>
           <tr>
             <td>
@@ -28,7 +28,7 @@
             <td><%= number_to_currency(listing.price) %></td>
             <td>
               <% if !listing.edit.nil? %>
-                <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %></p>
+                <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></td>      </p>
               <% else %>
                 <p><%= link_to 'Available', listing, class: "btn btn-primary" %></p>
               <% end %>
