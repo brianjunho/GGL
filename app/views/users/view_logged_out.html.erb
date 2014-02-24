@@ -14,7 +14,7 @@
       <p><%= link_to 'Like', like_user_path(@user), method: :post, class: "btn btn-link" %> | <%= link_to 'Unlike', unlike_user_path(@user), method: :post, class: "btn btn-link" %></p>
       
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
       <h3></h3>
       <% if !@user.try(:admin?) %>
         <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', @user] %></p>
