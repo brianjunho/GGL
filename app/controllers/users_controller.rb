@@ -25,20 +25,7 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
-  def likers
-    @user = User.find(params[:id])
-    @likers = @user.likers(current_user)
-    @users = User.all
-     response = {:user => @user, :likers => @likers, :users => @users}
-
-     respond_to do |format|
-      format.html  #followers.html.erb
-      format.xml {render :xml => response}
-    end
-  end
-
-
-  def view_logged_out
+   def view_logged_out
     @user = User.find(params[:name])
     respond_to do |format|
       format.html # show.html.erb

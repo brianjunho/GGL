@@ -10,8 +10,9 @@
       <p>User ID: <%= @user.id %></p>
       <p>Last online: <%= @user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
       <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
-      <p>Number likes: </p>
+      <p>Number likes: ????</p>
       <p><%= link_to 'Like', like_user_path(@user), method: :post, class: "btn btn-link" %> | <%= link_to 'Unlike', unlike_user_path(@user), method: :post, class: "btn btn-link" %></p>
+      <% end %>
   </div>
   <div class="col-md-2">
       <h3></h3>
