@@ -13,6 +13,30 @@ class UsersController < ApplicationController
     @user = User.all
 
   end
+  def like
+    user = User.find(params[:id])
+    current_user.toggle_like!(user) # => This assumes you have a variable current_user who is authenticated
+    redirect_to :back
+  end 
+
+  def unlike
+    user = User.find(params[:id])
+    current_user.unlike!(user) # => This assumes you have a variable current_user who is authenticated
+    redirect_to :back
+  end
+
+  def likers
+    @user = User.find(params[:id])
+    @likers = @user.likers(current_user)
+    @users = User.all
+     response = {:user => @user, :likers => @likers, :users => @users}
+
+     respond_to do |format|
+      format.html  #followers.html.erb
+      format.xml {render :xml => response}
+    end
+  end
+
 
   def view_logged_out
     @user = User.find(params[:name])

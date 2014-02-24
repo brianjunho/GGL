@@ -10,26 +10,35 @@
       <p>User ID: <%= @user.id %></p>
       <p>Last online: <%= @user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
       <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
+      <p>Number likes: </p>
+      <p><%= link_to 'Like', like_user_path(@user), method: :post, class: "btn btn-link" %> | <%= link_to 'Unlike', unlike_user_path(@user), method: :post, class: "btn btn-link" %></p>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
       <h3></h3>
       <% if !@user.try(:admin?) %>
         <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', @user] %></p>
        <% else %>
         <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', @user] %></p>
-       
-        <% end %>
+       <% end %>
                 
           <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', @user]).round(2) %></p>
+          <% if current_user != @user %>    
           <p><%= link_to 'Rate Me', new_user_review_path(@user), class: "btn btn-primary" %></p>
+          <% end %>
+
     </div>
-</div> 
+</div>
+
 <div class="row">
-  
-    <div class="col-md-6">
+      
+   <div class="col-md-8">
+      <% if current_user != @user %>    
+          <p><%= link_to 'Comment', new_user_review_path(@user), class: "btn btn-link" %></p>
+      <% end %>
       <table class="table table-bordered">
     
       <tr>
+        <th class="center">Date</th>
         <th class="center">Reviewer</th>
         <th class="center">Comment</th>
         
@@ -37,15 +46,16 @@
        
       <% Review.all.where(reviewee: @user).order("created_at DESC").each do |review| %>
         <tr>
-          <td><%= review.reviewer.name %></td>
+          <td><%= review.created_at.strftime("%B %-d, %Y") %></td>
+          <td><a href="/users/<%= review.reviewer.id %>"><%= review.reviewer.name %></a></td>
           <td><%= review.statement %></td>
+          
        </tr>
       <% end %>
     </div>
-  </div>
-   <% if current_user != @user %>       
-            <%= link_to "New Comment", new_user_review_path(@user), class: "btn btn-link" %>
-<% end %>
+</div>
+   
+
 
 
 

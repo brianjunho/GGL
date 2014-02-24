@@ -1,5 +1,5 @@
 class EditsController < ApplicationController
-  before_action :set_edit, only: [:show, :edit, :update, :destroy]
+  before_action :set_edit, only: [:show, :destroy]
   before_action :authenticate_user!
   before_filter :check_user, only: [:show]
  

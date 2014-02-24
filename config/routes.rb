@@ -1,9 +1,12 @@
 GGL::Application.routes.draw do
   
   devise_for :users
-  resources :users, only: [:view_logged_out, :view_logged_in, :index] do
-    resources :reviews 
-  end
+    resources :users, only: [:view_logged_out, :view_logged_in, :index, :like, :unlike, :likers] do
+      member do
+        post :like, :unlike
+      end
+      resources :reviews, only: [:new, :show]
+    end
   
     resources :listings do
       resources :edits, only: [:new, :create, :show]
