@@ -1,11 +1,25 @@
 <% if user_signed_in? && current_user.try(:admin?) %> 
 	<h1>All Users</h1>
+	<table class="table table-bordered table-striped">
+    
+      <tr>
+        <th class="center">Name</th>
+        <th class="center">ID</th>
+        <th class="center">Email</th>
+        <th class="center">Admin?</th>
+        <th class="center">Editor?</th>
+    </tr>
 	  <% @user.each do |user| %>
-	  <%= user.name %>
-	  <%= user.id %>
-	  <%= user.email %>
-	  <%= user.admin %><br/>
+	  
+	  	<tr>
+	  		<td><a href="/users/<%= user.id %>"><%= user.name %></a></td>
+	  		<td><%= user.id %></td>
+	  		<td><%= user.email %></td>
+ 			  <td><%= user.admin %></td>
+ 			  <td><%= user.editor %></td>
+ 			</tr>
 	<% end %>
+</table>
 	<br>
 	<% else %>
 		<script type="text/javascript">

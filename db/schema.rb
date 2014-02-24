@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223053741) do
+ActiveRecord::Schema.define(version: 20140224064930) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140223053741) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",                  default: false
+    t.boolean  "editor",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

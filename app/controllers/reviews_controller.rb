@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_filter :check_user, only: [:show, :edit, :update, :destroy]
   # GET /reviews
   # GET /reviews.json
   # GET /reviews/1
@@ -73,4 +74,10 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:rating, :statement)
     end
+
+    def check_user
+    if !((current_user == @review.reviewee) || (current_user == @review.reviewer) || current_user.try(:admin?))
+      redirect_to root_url, alert: "Sorry, this review belongs to someone else"
+    end
+  end
 end

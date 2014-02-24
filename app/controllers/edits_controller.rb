@@ -57,7 +57,7 @@ class EditsController < ApplicationController
     end
 
     def check_user
-      if !((current_user == @edit.requester) || (current_user == @edit.editor))
+      if !((current_user == @edit.requester) || (current_user == @edit.editor) || current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this belongs to someone else. Let's go somewhere else!"
       end
     end

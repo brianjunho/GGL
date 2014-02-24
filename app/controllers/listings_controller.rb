@@ -93,13 +93,13 @@ class ListingsController < ApplicationController
     end
 
     def check_user
-      if (current_user != @listing.user) && (!current_user.try(:admin?))
+      if !((current_user == @listing.user) || current_user.try(:editor?) || current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
       end
     end
 
     def check_status
-        if !@listing.edit.nil?
+        if !@listing.edit.nil? && !current_user.try(:admin?)
           redirect_to root_url, alert: "Sorry, this listing has already been proofread"
         end
      end

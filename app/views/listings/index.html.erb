@@ -16,7 +16,7 @@
           <tr>
             <td>
               <a href="/users/<%= listing.user.id %>"><%= listing.user.name %></a></td>
-            <td><%= listing.name %></td>
+            <td><a href="/listings/<%= listing.id %>"><%= listing.name %></td>
             <td><%= listing.prompt %></td>
             <td>
               <% if listing.option == "0" %>

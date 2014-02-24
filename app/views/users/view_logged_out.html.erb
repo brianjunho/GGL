@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-2">
+	<div class="col-md-3">
 		  <div class="thumbnail">
 		    <%= image_tag @user.avatar.url(:medium) %>
 		  </div>
@@ -8,6 +8,13 @@
   <div class="col-md-4">
       <h3><strong><%= @user.name %></strong></h3>
       <p>User ID: <%= @user.id %></p>
+       <% if current_user.try(:admin?) %>
+        <p>Admin</p>
+      <% else %>
+        <% if current_user.try(:editor?) %>
+          <p>Editor</p>
+        <% end %>
+      <% end %>
       <p>Last online: <%= @user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
       <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
       <p>Number likes: ????</p>
