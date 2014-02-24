@@ -1,3 +1,19 @@
 <h1>Team</h1>
-<p>add thumbnails and descriptions of editors</p>
+<p>Add thumbnails and descriptions of editors</p>
+
+<div class="row">
+	
+  <% User.all.where(admin: true).each do |user| %>
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <a href="/users/<%= user.id %>"><%= image_tag user.avatar.url(:medium) %></a>
+        <div class="caption">
+          <h3><%= user.name %></h3>
+          <p><b>Title/Position</b></p>
+          <p>Brief Description Here</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <br>

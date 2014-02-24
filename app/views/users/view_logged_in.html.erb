@@ -31,7 +31,7 @@
           <% if (Review.count :conditions => ['reviewee_id = ?', current_user]) == 0 %>
             <p><strong>Rating: </strong>N/A</p>
           <% else %>
-            <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]) %></p>
+            <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]).round(2) %></p>
           <% end %>
        
   </div>
