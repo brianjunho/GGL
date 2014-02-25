@@ -16,7 +16,11 @@
         <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
         
         <br>
-        <% if current_user != @listing.user %>       
+        <% if (current_user == @listing.user) && @listing.order.nil? %>       
+            <%= link_to "Place Order", new_listing_order_path(@listing), class: "btn btn-primary" %>
+            <% end %>
+
+        <% if (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.nil? %>       
             <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %>
         <% end %>
     </div>

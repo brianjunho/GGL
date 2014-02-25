@@ -17,8 +17,11 @@
       <% end %>
       <p>Last online: <%= @user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
       <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
-
-      <p>Number likes: ????</p>
+       <% if (Like.count :conditions => ['likeable_id = ?', @user]) == 0 %>
+          <p>Number likes: 0</p>
+        <% else %>
+          <p>Number likes: <%= Like.count :conditions => ['likeable_id = ?', @user] %></p>
+        <% end %>
       <p><%= link_to 'Like', like_user_path(@user), method: :post, class: "btn btn-link" %> | <%= link_to 'Unlike', unlike_user_path(@user), method: :post, class: "btn btn-link" %></p>
 
       
@@ -30,7 +33,7 @@
        <% else %>
         <p><strong>Number of Jobs Completed: </strong><%= Edit.count :conditions => ['editor_id = ?', @user] %></p>
        <% end %>
-       <p><strong>About: </strong><%= current_user.bio %></p>
+       <p><strong>About me: </strong><%= current_user.bio %></p>
        <br><br>
          <% if (Review.count :conditions => ['reviewee_id = ?', @user]) == 0 %>
             <p><strong>Rating: </strong>N/A</p>

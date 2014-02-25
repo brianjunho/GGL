@@ -1,7 +1,7 @@
 GGL::Application.routes.draw do
   
-  devise_for :users
-    resources :users, only: [:view_logged_out, :view_logged_in, :index, :like, :unlike, :likers] do
+   devise_for :users
+    resources :users, only: [:view_logged_out, :view_logged_in, :index, :like, :unlike] do
       member do
         post :like, :unlike
       end
@@ -9,9 +9,10 @@ GGL::Application.routes.draw do
     end
   
     resources :listings do
+      resources :orders
       resources :edits, only: [:new, :create, :show]
       end
-   
+  
 
   get "pages/home"
   get "pages/about"

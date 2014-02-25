@@ -14,6 +14,7 @@
 
   <div class="form-group">
     <b><p>What would you us to proofread?</p></b>
+    <p>
     <%= f.radio_button :name, 'Application' %>
     <%= f.label :name, 'Application', :value => 'Application' %>
     <%= f.radio_button :name, 'Resume' %>
@@ -24,7 +25,7 @@
     <%= f.label :name, 'Report', :value => 'Report' %>
      <%= f.radio_button :name, 'Translation' %>
     <%= f.label :name, 'Translation', :value => 'Translation' %>
-   
+   </p>
    </div>
   <div class="form-group">
     <%= f.label :prompt %><br>
@@ -38,15 +39,18 @@
     
   <div class="form-group">
     <p><b>Select Option</b></p>
+    <p>
     <%= f.radio_button :option, '0' %>
     <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %>
     <%= f.radio_button :option, '1' %>
     <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
+  </p>
     
-</div>
-
-
-
+  </div>
+  <div class="form-group">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments, rows: 3, placeholder: "Any other comments to help your editor", class: "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>

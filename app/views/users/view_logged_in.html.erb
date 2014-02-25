@@ -21,12 +21,12 @@
          <p>User ID: <%= current_user.id %></p>
       <p>Last online: <%= current_user.last_sign_in_at.strftime("%B %-d, %Y") %></p>
       <p>User since: <%= current_user.created_at.strftime("%B %-d, %Y") %></p>
-      <% if current_user.bio.nil? %>
-        <p>Click <%= link_to "here", edit_user_registration_path %> to add description</p>
-      <% else %>
-          <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
-          <p><%= current_user.bio %></p>
-      <% end %>
+      <% if (Like.count :conditions => ['likeable_id = ?', current_user]) == 0 %>
+          <p>Number likes: 0</p>
+        <% else %>
+          <p>Number likes: <%= Like.count :conditions => ['likeable_id = ?', current_user] %></p>
+        <% end %>
+      
       
   </div>
   <div class="col-md-3">
@@ -41,6 +41,13 @@
         <% end %>
         <% end %>
         <br><br>
+        <% if current_user.bio.nil? %>
+        <p>Click <%= link_to "here", edit_user_registration_path %> to add description</p>
+      <% else %>
+                    <p><strong>About me: </strong><%= current_user.bio %></p>
+          <p><%= link_to "Edit Bio", edit_user_registration_path %></p>
+      <% end %>
+        <br>
           <% if (Review.count :conditions => ['reviewee_id = ?', current_user]) == 0 %>
             <p><strong>Rating: </strong>N/A</p>
           <% else %>

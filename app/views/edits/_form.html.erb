@@ -1,7 +1,7 @@
 <%= form_for([@listing, @edit]) do |f| %>
   <% if @edit.errors.any? %>
     <div id="error_explanation" class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> 
       <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
 
       <ul>
@@ -28,6 +28,8 @@
     <div class="col-md-6">
         <p><strong>Application: </strong></p>
         <p><%= @listing.application %></p>
+        <p><strong>Comments for Editor: </strong></p>
+        <p><%= @listing.comments %></p>
     </div>
     <div class="col-md-6">
         <div class="form-group">
