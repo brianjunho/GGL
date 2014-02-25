@@ -28,7 +28,11 @@
             <td><%= number_to_currency(listing.price) %></td>
             <td>
               <% if !listing.edit.nil? %>
-                <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></td>      </p>
+                <% if current_user.try(:admin?) %>
+                   <p><%= link_to "Completed", listing, class: "btn btn-link" %> on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
+                <% else %>
+                <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
+                <% end %>
               <% elsif listing.order.nil? %>
                 <% if current_user.try(:admin?) %>
                     <p><%= link_to 'Pending Payment', listing, class: "btn btn-primary" %></p>

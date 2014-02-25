@@ -23,6 +23,7 @@
         <% else %>
           <p>Number likes: <%= Like.count :conditions => ['likeable_id = ?', current_user] %></p>
         <% end %>    
+        <p><b>Money</b></p>
   </div>
   <div class="col-md-4">
       <h3></h3>
@@ -116,7 +117,8 @@
       <% end %>
     </table>
 <% elsif user_signed_in? && current_user.try(:editor?) %> 
-
+    <p>current amount</p>
+    <p>request payout</p>
      <h3>Your Job History</h3>
      <table class="table table-bordered table-striped">
           
