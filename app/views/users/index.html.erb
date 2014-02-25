@@ -1,25 +1,57 @@
 <% if user_signed_in? && current_user.try(:admin?) %> 
-	<h1>All Users</h1>
+	<h1>User Page</h1>
+	<p>Click on names to link to profiles</p>
+	<p>add data on activity (number of posts/jobs, money made)</p>
+	
+	<br>
+	
 	<table class="table table-bordered table-striped">
-    
-      <tr>
-        <th class="center">Name</th>
+     <tr>
+     	<th class="group">Group</th>
         <th class="center">ID</th>
+        <th class="center">Name</th>
         <th class="center">Email</th>
-        <th class="center">Admin?</th>
-        <th class="center">Editor?</th>
+        <th class="center">Last Sign In</th>
+        <th class="center">Created</th>
+        <th class="center">Sign in count</th>
+        <th class="center">Current Sign In</th>
+
     </tr>
-	  <% @user.each do |user| %>
 	  
-	  	<tr>
-	  		<td><a href="/users/<%= user.id %>"><%= user.name %></a></td>
+			<% User.all.where(editor: true).each do |user| %>
+	   	<tr>
+	  		<% if user.try(:admin?)%>
+	  			<td>Admin</td>
+	  			<% else %>
+	  		<td>Editor</td>
+	  		<% end %>
 	  		<td><%= user.id %></td>
+	  		<td><a href="/users/<%= user.id %>"><%= user.name %></a></td>
 	  		<td><%= user.email %></td>
- 			  <td><%= user.admin %></td>
- 			  <td><%= user.editor %></td>
+ 			<td><%= user.last_sign_in_at.strftime("%B %-d, %Y") %></td>
+ 			  <td><%= user.created_at.strftime("%B %-d, %Y") %></td>
+ 			   <td><%= user.sign_in_count %></td>
+ 			  
+ 			  <td><%= user.current_sign_in_at %></td>
+ 			</tr>
+		<% end %>
+		<% User.all.where(editor: false).each do |user| %>
+	   	<tr>
+	  		<td>Regular User</td>
+	  		<td><%= user.id %></td>
+	  		<td><a href="/users/<%= user.id %>"><%= user.name %></a></td>
+	  		<td><%= user.email %></td>
+ 			  <td><%= user.last_sign_in_at.strftime("%B %-d, %Y") %></td>
+ 			  <td><%= user.created_at.strftime("%B %-d, %Y") %></td>
+ 			     <td><%= user.sign_in_count %></td>
+ 			  
+ 			  <td><%= user.current_sign_in_at %></td>
  			</tr>
 	<% end %>
-</table>
+
+	</table>
+
+    
 	<br>
 	<% else %>
 		<script type="text/javascript">

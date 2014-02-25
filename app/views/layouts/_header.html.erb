@@ -30,7 +30,7 @@
                   <li><%= link_to "Pricing", pages_pricing_path %></li>
                  <li><%= link_to "Contact", pages_contact_path %></li>
                   <li><%= link_to "Team", pages_team_path %></li>
-                  <li><%= link_to "Become an Editor!", root_url %></li>
+                  <li><%= link_to "Become an Editor!XX", root_url %></li>
                 </ul>
               </li>
             <li><%= link_to "Create Listing", new_listing_path %></li>
@@ -44,6 +44,8 @@
           <% if user_signed_in? && current_user.try(:admin?) %> 
             <li><%= link_to "Listings", listings_path %></li>
             <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "OrdersXX", users_path %></li>
+            <li><%= link_to "Action/OverviewXX", users_path %></li>
             <% end %>
         </ul>
        <!--

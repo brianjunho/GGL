@@ -1,3 +1,4 @@
+<% if !current_user.try(:admin?) %>
 <html>
   <head>
   </head>
@@ -46,5 +47,10 @@
 
 
 </html>
+<% else %>
+  <p> see all action and activities</p>
+  <p>see how much money and users </p>
+  <p>list of requested payouts</p>
+  <% end %>
 
 
