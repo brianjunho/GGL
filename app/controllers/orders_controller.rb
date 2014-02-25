@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_filter :check_user, only: [:index]
 
   # GET /orders
   # GET /orders.json
@@ -9,21 +10,13 @@ class OrdersController < ApplicationController
     
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
-  end
-
   # GET /orders/new
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id])
   end
 
-  # GET /orders/1/edit
-  def edit
-  end
-
+ 
   # POST /orders
   # POST /orders.json
   def create
@@ -44,29 +37,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
-    end
-  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -80,7 +53,7 @@ class OrdersController < ApplicationController
     end
 
     def check_user
-      if !((current_user == @listing.user) || current_user.try(:admin?))
+      if !(current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this order belongs to someone else"
       end
     end

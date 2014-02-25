@@ -14,24 +14,19 @@
   <% end %>
 <div class="row">
     <div class="col-md-5">
-        <h4><strong>Application: </strong></h4>
-        <p><%= @listing.application %></p>
-        <br>
-        <p><strong>Comments for Editor: </strong></p>
-        <p><%= @listing.comments %></p>
-    </div>
-    <div class="col-md-5">
-    <h4><strong>Essay Type: </strong><%= @listing.name %></h4>
-    <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+        <h4><strong>Essay Type: </strong><%= @listing.name %></h4>
     <p><strong>Pricing Option: </strong>
         <% if @listing.option == "0" %>
               Basic Proofread
           <% else %>
             Proofread and Comments
           <% end %></p>
-       <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+       <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p><br>
+            </div>
+    <div class="col-md-5">
+    
        
-  
+  <p><strong>Put stripe here for payment</strong></p>
    <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>
   </div>

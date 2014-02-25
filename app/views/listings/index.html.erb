@@ -1,4 +1,4 @@
-  <% if user_signed_in? && current_user.try(:admin?) %>
+  <% if user_signed_in? && current_user.try(:editor?) %>
     <h1>Browse Listings</h1>
 
 
@@ -29,7 +29,13 @@
             <td>
               <% if !listing.edit.nil? %>
                 <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></td>      </p>
-              <% else %>
+              <% elsif listing.order.nil? %>
+                <% if current_user.try(:admin?) %>
+                    <p><%= link_to 'Pending Payment', listing, class: "btn btn-primary" %></p>
+                <% else %>
+                  <p>Pending Payment from User</p>
+                  <% end %>
+              <% else %>                  
                 <p><%= link_to 'Available', listing, class: "btn btn-primary" %></p>
               <% end %>
             </td>

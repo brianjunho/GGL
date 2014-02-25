@@ -1,25 +1,27 @@
 <h2>Sign up</h2>
-
+<div class="row">
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true }) do |f| %>
   <%= devise_error_messages! %>
- 
-  <div class="form-group">
-    <p><b>Create a Username</b></p>
-    <%= f.text_field :name, :autofocus => true, class: "form-control" %>
+  <div class="col-md-5">
+    <div class="form-group">
+      <p><b>Create a Username</b></p>
+      <%= f.text_field :name, :autofocus => true, class: "form-control" %>
+    </div>
+
+    <div class="form-group"><%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %></div>
+    <div class="form-group"><p><b>Upload Profile Image</b> (optional)</p>
+    <%= f.file_field :avatar, class: "form-control" %></div>
+
+    <div class="form-group"><%= f.submit "Sign up", class: "btn btn-primary" %></div>
   </div>
-
-  <div class="form-group"><%= f.label :email %>
-  <%= f.email_field :email, class: "form-control" %></div>
-
-  <div class="form-group"><%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %></div>
-
-  <div class="form-group"><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, class: "form-control" %></div>
-  <div class="form-group"><p><b>Upload Profile Image</b></p>
-  <%= f.file_field :avatar, class: "form-control" %></div>
-
-  <div class="form-group"><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
+</div>
 
 <%= render "devise/shared/links" %>

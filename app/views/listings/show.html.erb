@@ -1,36 +1,161 @@
-<div class="row">
-    <div class="col-md-6">
-    	<h4><strong>Application: </strong></h4>
-   	   	<p><%= @listing.application %></p>
-    </div>
-    <div class="col-md-6">
-		<h4><strong>Document Type: </strong><%= @listing.name %></h4>
-		<p><strong>Prompt: </strong><%= @listing.prompt %></p>
-        <% if @listing.option == "0" %>
-		  <p><strong>Pricing Option: </strong>Basic Proofread</p>
-        <% else %>
-          <p><strong>Pricing Option: </strong>Proofread and Comments</p>
-        <% end %>
-        <br>
-        <p><strong>Word Count: </strong><%= @listing.word_count %></p>
-        <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
-        
-        <br>
-        <% if (current_user == @listing.user) && @listing.order.nil? %>       
-            <%= link_to "Place Order", new_listing_order_path(@listing), class: "btn btn-primary" %>
+<% if (current_user == @listing.user) && @listing.order.nil? %>
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Preview Order</h1>
+            <h4>You can still go back and edit. Order is not final</h4>
+        	<p><strong>Document Type: </strong><%= @listing.name %></p>
+            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <% if @listing.option == "0" %>
+              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+            <% else %>
+              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
             <% end %>
+            
+            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
+            <strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+            <br>
 
-        <% if (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.nil? %>       
-            <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %>
-        <% end %>
+                <p><%= link_to "Place Order", new_listing_order_path(@listing), class: "btn btn-primary" %></p>
+            
+        </div>
+        <div class="col-md-6">
+    		<h1></h1><br>
+            <h2></h2>
+            <p><strong>Application: </strong></p>
+            <p><%= @listing.application %></p>
+            <p><strong>Comments to Editor: </strong></p>
+            <p><%= @listing.comments %></p>
+       
+                
+
+           
+        </div>
+        
     </div>
+<% elsif (current_user == @listing.user) && !@listing.order.nil? %>
+     <div class="row">
+        <div class="col-md-5">
+            <h1>My Listing</h1>
+            <p><strong>Document Type: </strong><%= @listing.name %></p>
+            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <% if @listing.option == "0" %>
+              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+            <% else %>
+              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+            <% end %>
+            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
+            <strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+            <br>
+            
+        </div>
+        <div class="col-md-6">
+            <h1></h1><br>
+            <p><strong>Application: </strong></p>
+            <p><%= @listing.application %></p>
+            <p><strong>Comments to Editor: </strong></p>
+            <p><%= @listing.comments %></p>
+        </div>
+        
+    </div>
+<% elsif (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.nil? %>
     
-</div>
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Listing</h1>
+            <p><strong>Document Type: </strong><%= @listing.name %></p>
+            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <% if @listing.option == "0" %>
+              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+            <% else %>
+              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+            <% end %>
+            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
+            <strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+            <br>
+          <p>  <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %></p>
+        </div>
+        <div class="col-md-6">
+            <h1></h1>   
+            <h2></h2><br>
+              <p><strong>Application: </strong></p>
+            <p><%= @listing.application %></p>
+            <p><strong>Comments to Editor: </strong></p>
+            <p><%= @listing.comments %></p>
+              
+            
+        </div>
+        
+    </div>
+<% elsif !@listing.edit.nil? %>
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Listing Completed!</h1>
+            <p><strong>Document Type: </strong><%= @listing.name %></p>
+            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <% if @listing.option == "0" %>
+              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+            <% else %>
+              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+            <% end %>
+            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
+            <strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+            <br>
+            <p>Completed on: <%= listing.edit.created_at.strftime("%B %-d, %Y") %></p>
+        </div>
+        <div class="col-md-6">
+            <h1></h1>   
+            <h2></h2><br>
+              <p><strong>Application: </strong></p>
+            <p><%= @listing.application %></p>
+            <p><strong>Comments to Editor: </strong></p>
+            <p><%= @listing.comments %></p>
+              
+         
+        </div>
+        
+    </div>
+<% elsif current_user.try(:admin?) %>
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Listing Details</h1>
+            
+            <p><strong>Document Type: </strong><%= @listing.name %></p>
+            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <% if @listing.option == "0" %>
+              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+            <% else %>
+              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+            <% end %>
+            
+            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
+            <strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+            <br>
+
+                
+            
+        </div>
+        <div class="col-md-6">
+            <h1></h1><br>
+            <h2></h2>
+            <p><strong>Application: </strong></p>
+            <p><%= @listing.application %></p>
+            <p><strong>Comments to Editor: </strong></p>
+            <p><%= @listing.comments %></p>
+       
+                
+
+           
+        </div>
+        
+    </div>
+<% end %>
 
 
      
 <% if current_user == @listing.user %>
-    <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
+    <% if @listing.order.nil? %>
+        <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
+        <% end %>
     <%= link_to 'Back', dashboard_path, class: "btn btn-link" %>
 <% else %>
     <%= link_to 'Back', listings_path, class: "btn btn-link" %>

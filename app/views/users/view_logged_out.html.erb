@@ -1,5 +1,6 @@
 <div class="row">
-	<div class="col-md-3">
+    <div class="col-md-1"></div>
+	<div class="col-md-2">
 		  <div class="thumbnail">
 		    <%= image_tag @user.avatar.url(:medium) %>
 		  </div>
@@ -26,7 +27,7 @@
 
       
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
       <h3></h3>
       <% if !@user.try(:admin?) %>
         <p><strong>Number of Listings: </strong><%= Listing.count :conditions => [ 'user_id = ?', @user] %></p>
@@ -52,21 +53,22 @@
       <% end %>
       <table class="table table-bordered">
     
-      <tr>
-        <th class="center">Date</th>
-        <th class="center">Reviewer</th>
-        <th class="center">Comment</th>
-        
-       </tr>
-       
-      <% Review.all.where(reviewee: @user).order("created_at DESC").each do |review| %>
         <tr>
-          <td><%= review.created_at.strftime("%B %-d, %Y") %></td>
-          <td><a href="/users/<%= review.reviewer.id %>"><%= review.reviewer.name %></a></td>
-          <td><%= review.statement %></td>
+          <th class="center">Date</th>
+          <th class="center">Reviewer</th>
+          <th class="center">Comment</th>
           
-       </tr>
-      <% end %>
+         </tr>
+       
+          <% Review.all.where(reviewee: @user).order("created_at DESC").each do |review| %>
+            <tr>
+              <td><%= review.created_at.strftime("%B %-d, %Y") %></td>
+              <td><a href="/users/<%= review.reviewer.id %>"><%= review.reviewer.name %></a></td>
+              <td><%= review.statement %></td>
+              
+           </tr>
+          <% end %>
+        </table>
     </div>
 </div>
    
