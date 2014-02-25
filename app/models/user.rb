@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name
   validates_length_of :name, maximum: 32
+  validates_length_of :bio, maximum: 200
   validates_exclusion_of :name, in: ['www', 'mail', 'ftp']
   
   has_many :listings, dependent: :destroy

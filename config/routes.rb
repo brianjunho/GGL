@@ -5,7 +5,7 @@ GGL::Application.routes.draw do
       member do
         post :like, :unlike
       end
-      resources :reviews, only: [:new, :show]
+      resources :reviews
     end
   
     resources :listings do

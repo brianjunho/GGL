@@ -76,7 +76,7 @@ class ReviewsController < ApplicationController
     end
 
     def check_user
-    if !((current_user == @review.reviewee) || (current_user == @review.reviewer) || current_user.try(:admin?))
+    if !((current_user == @review.reviewee) || (current_user == @review.reviewer) || (current_user.try(:admin?)))
       redirect_to root_url, alert: "Sorry, this review belongs to someone else"
     end
   end

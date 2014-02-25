@@ -15,13 +15,13 @@
   <div class="form-group">
     <b><p>What would you us to proofread?</p></b>
     <%= f.radio_button :name, 'Application' %>
-    <%= f.label :name, 'Application', :value => 'Application' %><br>
+    <%= f.label :name, 'Application', :value => 'Application' %>
     <%= f.radio_button :name, 'Resume' %>
-    <%= f.label :name, 'Resume', :value => 'Resume' %><br>
+    <%= f.label :name, 'Resume', :value => 'Resume' %>
     <%= f.radio_button :name, 'Sample Writing' %>
-    <%= f.label :name, 'Sample Writing', :value => 'Sample Writing' %><br>
+    <%= f.label :name, 'Sample Writing', :value => 'Sample Writing' %>
      <%= f.radio_button :name, 'Report' %>
-    <%= f.label :name, 'Report', :value => 'Report' %><br>
+    <%= f.label :name, 'Report', :value => 'Report' %>
      <%= f.radio_button :name, 'Translation' %>
     <%= f.label :name, 'Translation', :value => 'Translation' %>
    
@@ -30,16 +30,16 @@
     <%= f.label :prompt %><br>
     <p class="help-block">What is the essay topic?</p>
     <%= f.text_area :prompt, placeholder: "Enter prompt", class: "form-control" %>
-  </div>
+  </div> 
   <div class="form-group">
     <%= f.label :application %><br>
-    <%= f.text_area :application, placeholder: "Paste application here", class: "form-control" %>
+    <%= f.text_area :application, rows: 10, placeholder: "Paste application here", class: "form-control" %>
   </div>
     
   <div class="form-group">
     <p><b>Select Option</b></p>
     <%= f.radio_button :option, '0' %>
-    <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %><br>
+    <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %>
     <%= f.radio_button :option, '1' %>
     <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
     

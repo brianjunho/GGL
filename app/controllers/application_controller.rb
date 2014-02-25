@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:sign_up) << :avatar
     devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.for(:account_update) << :bio
   end
   def after_sign_in_path_for(resource)
     stored_location_for(:user) || dashboard_path
