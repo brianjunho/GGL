@@ -13,12 +13,10 @@
   <% end %>
 
   <div class="form-group">
-    <b><p>What would you us to proofread?</p></b>
-    <p>
+    <b><p>What would you like to proofread?</p></b>
+    <p class="row">
     <%= f.radio_button :name, 'Application' %>
     <%= f.label :name, 'Application', :value => 'Application' %>
-    <%= f.radio_button :name, 'Resume' %>
-    <%= f.label :name, 'Resume', :value => 'Resume' %>
     <%= f.radio_button :name, 'Sample Writing' %>
     <%= f.label :name, 'Sample Writing', :value => 'Sample Writing' %>
      <%= f.radio_button :name, 'Report' %>
@@ -38,13 +36,13 @@
   </div>
     
   <div class="form-group">
-    <p><b>Select Option</b></p>
-    <p>
-    <%= f.radio_button :option, '0' %>
-    <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %>
-    <%= f.radio_button :option, '1' %>
-    <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
-  </p>
+      <p><b>Select Option</b></p>
+      <p class="row">
+      <%= f.radio_button :option, '0' %>
+      <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %>
+      <%= f.radio_button :option, '1' %>
+      <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
+    </p>
     
   </div>
   <div class="form-group">

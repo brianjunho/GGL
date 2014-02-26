@@ -1,0 +1,109 @@
+<%= form_for(@payment) do |f| %>
+ <% if @payment.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h4>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div id="stripe_error" class="alert alert-danger" style="display:none">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+   </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h1></h1>
+    <h2></h2>
+    <h2>Payout Request </h2>
+    <br>
+    <table class="table">
+      <tr>
+      <td><strong>Paid out to:</strong></td>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= current_user.email %></td>
+    </tr>
+  </table> 
+        <br>
+    <table class="table">
+      <tr>
+      <td><strong>Available Amount:</strong></td>
+      <td>$XXX</td>
+    </tr>
+    <tr>
+      <td>Enter request amount:</td>
+      <td><div class="form-group">
+         <%= f.text_field :request, class: "form-control" %>
+    </div></td>
+    </tr>
+  </table> 
+    
+  </div>
+  
+  <div class="col-md-8">
+
+  <% if current_user.recipient.blank? %>
+        <h3>Enter Bank Account Information</h3>
+      
+      <p><u>Requirements:</u></p>
+          <li>"US" is the only currently supported country</li>
+          <li>Routing number should be the ACH routing number, not the wire transfer number</li>
+          <li>Must transfer to a checking account</li>
+          <p>
+      </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <div class="form-group">
+          <%= f.label "Legal Name" %>
+          <%= f.text_field :legalname, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+
+        <div class="form-group">
+          <%= label_tag :country %> US
+          <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
+        </div>
+      </div>
+    </div>
+        <div class="col-md-8">
+        <div class="form-group">
+          <%= label_tag :routing_number %> 111000025 for test
+          
+          <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :account_number %> 000123456789
+          <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
+        </div>
+      <% else %>
+        <h3></h3>
+        <p>Bank account information is saved from previous payout request</p>
+         
+        <div class="row">
+         <div class="col-md-5">
+            <div class="form-group">
+            <%= f.label "Please enter legal name for verification" %>
+            <%= f.text_field :legalname, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+        
+         
+      <% end %>
+    <p><i>** $XXX flat rate will be charged upon each payout</i></p>
+    <div class="form-group">
+      <%= f.submit "Make Payout", class: "btn btn-success" %>
+    </div>
+  </div>
+
+<% end %>
+</div>

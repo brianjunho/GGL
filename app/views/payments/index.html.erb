@@ -1,0 +1,23 @@
+<h1>Payments Made</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= link_to 'Show', payment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

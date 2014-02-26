@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_filter :check_user, only: [:show]
   
 
 
@@ -60,5 +61,10 @@ class OrdersController < ApplicationController
       params[:order]
     end
 
+    def check_user
+      if !((current_user == @listing.user) || current_user.try(:admin?))
+        redirect_to root_url, alert: "Sorry, this order belongs to someone else"
+      end
+    end
     
 end

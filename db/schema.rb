@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225061655) do
+ActiveRecord::Schema.define(version: 20140226074703) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20140225061655) do
     t.integer  "customer_id"
   end
 
+  create_table "payments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "proofreader_id"
+    t.string   "legalname"
+    t.decimal  "request"
+  end
+
   create_table "reviews", force: true do |t|
     t.decimal  "rating"
     t.text     "statement"
@@ -106,6 +114,7 @@ ActiveRecord::Schema.define(version: 20140225061655) do
     t.boolean  "admin",                  default: false
     t.boolean  "editor",                 default: false
     t.text     "bio"
+    t.string   "recipient"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

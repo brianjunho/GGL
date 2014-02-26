@@ -43,6 +43,12 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @review = Review.new(review_params)
+    @user = User.find(params[:user_id])
+    @reviewee = @user
+    @review.reviewer_id = current_user.id
+    @review.reviewee_id = @reviewee.id
+    
     respond_to do |format|
       if @review.update(review_params)
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }

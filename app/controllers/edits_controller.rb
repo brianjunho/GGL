@@ -1,7 +1,7 @@
 class EditsController < ApplicationController
   before_action :set_edit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_filter :check_user, only: [:show]
+  before_filter :check_user, only: [:show, :edit]
  
   
     # GET /edits
@@ -13,6 +13,9 @@ class EditsController < ApplicationController
   # GET /edits/1
   # GET /edits/1.json
   def show
+  end
+
+  def edit
   end
 
   # GET /edits/new
@@ -35,7 +38,7 @@ class EditsController < ApplicationController
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to dashboard_path, notice: 'Edit was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Proofread was successfully created.' }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -44,6 +47,25 @@ class EditsController < ApplicationController
     end
   end
 
+  def update
+      @edit = Edit.new(edit_params)
+    @listing = Listing.find(params[:listing_id])
+    @requester = @listing.user
+
+    @edit.listing_id = @listing.id
+    @edit.editor_id = current_user.id
+    @edit.requester_id = @requester.id
+
+    respond_to do |format|
+      if @edit.update(edit_params)
+        format.html { redirect_to dashboard_path, notice: 'Proofread was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @edit.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :reviewsmade, class_name: "Review", foreign_key: "reviewee_id"
   has_many :reviewsgiven, class_name: "Review", foreign_key: "reviewer_id"
   has_many :purchases, class_name: "Order", foreign_key: "customer_id"
+  has_many :moneytransfer, class_name: "Payment", foreign_key: "proofreader_id"
   acts_as_liker
   acts_as_likeable
 
