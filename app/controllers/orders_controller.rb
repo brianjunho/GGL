@@ -1,14 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_filter :check_user, only: [:index]
+  
 
-  # GET /orders
-  # GET /orders.json
-  def index
-    @orders = Order.all
-    
-  end
 
   # GET /orders/new
   def new
@@ -26,9 +20,23 @@ class OrdersController < ApplicationController
     @order.customer_id = current_user.id
     @order.listing_id = @listing.id
 
+    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    token = params[:stripeToken]
+
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@listing.price * 100).floor,
+        :currency => "usd",
+        :card => token
+        )
+      flash[:notice] = "Thanks for ordering! Check back soon for your completed proofread"
+    rescue Stripe::CardError => e
+      flash[:danger] = e.message
+    end
+
      respond_to do |format|
       if @order.save
-        format.html { redirect_to dashboard_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to dashboard_path }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -52,9 +60,5 @@ class OrdersController < ApplicationController
       params[:order]
     end
 
-    def check_user
-      if !(current_user.try(:admin?))
-        redirect_to root_url, alert: "Sorry, this order belongs to someone else"
-      end
-    end
+    
 end

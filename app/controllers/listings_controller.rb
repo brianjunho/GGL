@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
     @listing.user_id = current_user.id
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
     
-    # pricing
+    # define pricing
     if @listing.option == "0" # basic proofread
         if @listing.word_count < 1100
                 @listing.price = @listing.word_count * 0.33
@@ -60,6 +60,24 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+      @listing = Listing.new(listing_params)
+    @listing.user_id = current_user.id
+    @listing.word_count = @listing.application.scan(/[\w-]+/).size
+    
+    # define pricing
+    if @listing.option == "0" # basic proofread
+        if @listing.word_count < 1100
+                @listing.price = @listing.word_count * 0.33
+        else
+                @listing.price = @listing.word_count * 0.30
+        end
+    else
+        if @listing.word_count < 1100 # with comments
+                @listing.price = @listing.word_count * 0.66
+        else
+                @listing.price = @listing.word_count * 0.60
+        end
+    end
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -76,7 +94,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url }
+      format.html { redirect_to dashboard_path }
       format.json { head :no_content }
     end
   end

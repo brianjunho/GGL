@@ -1,0 +1,8 @@
+<% if user_signed_in? && current_user.try(:admin?) %>
+	<h1>Order Summary</h1>
+	<p>show all info about user orders</p>
+ <% else %>
+  <script type="text/javascript">
+        window.location.href="/dashboard"  
+  </script>
+<% end %>

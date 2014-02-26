@@ -48,8 +48,10 @@
 
 </html>
 <% else %>
-  <p> see all action and activities</p>
-  <p>see how much money and users </p>
+  <h1>Admin Dashboard</h1>
+  <p><%= link_to "About", pages_about_path, class: "btn btn-link" %> | <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> | <%= link_to "Team", pages_team_path, class: "btn btn-link" %> | <%= link_to "Pricing", pages_pricing_path, class: "btn btn-link" %> | <%= link_to "Testimonial", pages_testimonial_path, class: "btn btn-link" %></p>
+  <p>see all action and activities</p>
+  <p>money and users </p>
   <p>list of requested payouts</p>
   <% end %>
 
