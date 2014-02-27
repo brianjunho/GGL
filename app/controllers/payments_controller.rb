@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.proofreader_id = current_user.id
-
+    
     
       
       Stripe.api_key = ENV["STRIPE_API_KEY"]
