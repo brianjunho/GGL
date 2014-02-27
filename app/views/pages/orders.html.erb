@@ -1,7 +1,8 @@
 <% if user_signed_in? && current_user.try(:admin?) %>
 	<h1>Order Summary</h1>
 	<h3>Total amount made from customers: <%= number_to_currency(Order.sum(:amount) * 0.16) %></h3>
-  <p>Excludes payouts to editors</p>
+  <h3>Number orders: <%= Order.count(:id) %></h3>
+  
 
       <table class="table table-bordered table-striped">
         <tr>

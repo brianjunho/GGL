@@ -1,7 +1,8 @@
 <% if user_signed_in? && current_user.try(:admin?) %> 
 	<h1>User Page</h1>
-	<p>Click on names to link to profiles</p>
-	<p>add data on activity (number of posts/jobs, money made)</p>
+	
+	<h3>Total users: <%= User.count(:id) %></h3>
+	<h3>Total editors: <%= User.count :conditions => ['editor = ?', true] %></h3>
 	
 	<br>
 	
