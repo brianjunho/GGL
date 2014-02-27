@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.proofreader_id = current_user.id
 
-    if current_user.recipient.blank?
+    
       
       Stripe.api_key = ENV["STRIPE_API_KEY"]
       token = params[:stripeToken]
@@ -37,13 +37,16 @@ class PaymentsController < ApplicationController
         )
         current_user.recipient = recipient.id
         current_user.save
-      end 
+      
 
       transfer = Stripe::Transfer.create(
-        :amount => (@payment.request * 100).floor,
+        :amount => (@payment.request * 97).floor,
         :currency => "usd",
         :recipient => current_user.recipient
         )
+
+      current_user.balance = current_user.balance - @payment.request
+      current_user.save
 
              respond_to do |format|
       if @payment.save

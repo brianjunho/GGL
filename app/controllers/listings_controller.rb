@@ -32,18 +32,10 @@ class ListingsController < ApplicationController
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
     
     # define pricing
-    if @listing.option == "0" # basic proofread
-        if @listing.word_count < 1100
-                @listing.price = @listing.word_count * 0.33
-        else
-                @listing.price = @listing.word_count * 0.30
-        end
-    else
-        if @listing.word_count < 1100 # with comments
-                @listing.price = @listing.word_count * 0.66
-        else
-                @listing.price = @listing.word_count * 0.60
-        end
+    if @listing.option == "0" # basic
+        @listing.price = @listing.word_count * 1
+    else # standard
+        @listing.price = @listing.word_count * 3
     end
      
     respond_to do |format|
@@ -64,23 +56,16 @@ class ListingsController < ApplicationController
     @listing.user_id = current_user.id
     @listing.word_count = @listing.application.scan(/[\w-]+/).size
     
-    # define pricing
-    if @listing.option == "0" # basic proofread
-        if @listing.word_count < 1100
-                @listing.price = @listing.word_count * 0.33
-        else
-                @listing.price = @listing.word_count * 0.30
-        end
-    else
-        if @listing.word_count < 1100 # with comments
-                @listing.price = @listing.word_count * 0.66
-        else
-                @listing.price = @listing.word_count * 0.60
-        end
+      # define pricing
+    if @listing.option == "0" # basic
+        @listing.price = @listing.word_count * 1
+    else # standard
+        @listing.price = @listing.word_count * 3
     end
+
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

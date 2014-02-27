@@ -1,6 +1,43 @@
 <% if user_signed_in? && current_user.try(:admin?) %>
 	<h1>Order Summary</h1>
-	<p>show all info about user orders</p>
+	<h3>Total amount made from customers: <%= number_to_currency(Order.sum(:amount) * 0.16) %></h3>
+  <p>Excludes payouts to editors</p>
+
+      <table class="table table-bordered table-striped">
+        <tr>
+            <th class="center">Order made by</th>
+            
+            <th class="center">Price</th>
+            <th class="center">Date made</th>
+            <th class="center">Status</th>
+      
+         </tr>
+           
+        <% Order.order("created_at DESC").each do |order| %>
+          <tr>
+            <td>
+              <a href="/users/<%= order.customer.id %>"><%= order.customer.name %></a></td>
+            <td><%= number_to_currency(order.listing.price * 0.16) %></td>
+             <td><%= order.created_at %></td>
+              <% if !order.listing.edit.nil? %>
+                
+                   <td><%= link_to "Completed", order.listing, class: "btn btn-link" %> on <%= order.listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= order.listing.edit.editor_id %>"><%= order.listing.edit.editor.name %></a></td>
+                
+              <% else %>
+                               
+                	<td><%= link_to 'Not yet proofread', order.listing, class: "btn btn-primary" %></td>
+              <% end %>
+            
+        </tr>
+
+              <% end %>
+      </table>
+      
+
+
+    
+
+
  <% else %>
   <script type="text/javascript">
         window.location.href="/dashboard"  

@@ -13,21 +13,8 @@
   <% end %>
 
   <div class="form-group">
-    <b><p>What would you like to proofread?</p></b>
-    <p class="row">
-    <%= f.radio_button :name, 'Application' %>
-    <%= f.label :name, 'Application', :value => 'Application' %>
-    <%= f.radio_button :name, 'Sample Writing' %>
-    <%= f.label :name, 'Sample Writing', :value => 'Sample Writing' %>
-     <%= f.radio_button :name, 'Report' %>
-    <%= f.label :name, 'Report', :value => 'Report' %>
-     <%= f.radio_button :name, 'Translation' %>
-    <%= f.label :name, 'Translation', :value => 'Translation' %>
-   </p>
-   </div>
-  <div class="form-group">
     <%= f.label :prompt %><br>
-    <p class="help-block">What is the essay topic?</p>
+    <p class="help-block">What is the prompt for your essay?</p>
     <%= f.text_area :prompt, placeholder: "Enter prompt", class: "form-control" %>
   </div> 
   <div class="form-group">
@@ -39,15 +26,15 @@
       <p><b>Select Option</b></p>
       <p class="row">
       <%= f.radio_button :option, '0' %>
-      <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %>
+      <%= f.label :option, 'Basic Proofread', :value => 'Basic Proofread' %><br>
       <%= f.radio_button :option, '1' %>
-      <%= f.label :option, 'Proofread with Comments', :value => 'Proofread with Comments' %>
+      <%= f.label :option, 'Standard (Comprehensive Proofread)', :value => 'Standard (Comprehensive Proofread)' %>
     </p>
     
   </div>
   <div class="form-group">
     <%= f.label :comments %><br>
-    <%= f.text_area :comments, rows: 3, placeholder: "Any other comments to help your editor", class: "form-control" %>
+    <%= f.text_area :comments, rows: 3, placeholder: "Any other comments to help your editor. Leave blank if not required", class: "form-control" %>
   </div>
 
   <div class="form-group">

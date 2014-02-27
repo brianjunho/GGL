@@ -24,6 +24,7 @@ GGL::Application.routes.draw do
   get "pages/contact"
   get "pages/testimonial"
   get "pages/orders"
+  get "pages/payouts"
   
   get 'requests' => "listings#requests"
   get 'dashboard' => 'users#view_logged_in'

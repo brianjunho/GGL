@@ -36,11 +36,12 @@
     <table class="table">
       <tr>
       <td><strong>Available Amount:</strong></td>
-      <td>$XXX</td>
+      <td><%= number_to_currency(current_user.balance) %></td
     </tr>
     <tr>
       <td>Enter request amount:</td>
       <td><div class="form-group">
+
          <%= f.text_field :request, class: "form-control" %>
     </div></td>
     </tr>
@@ -50,7 +51,7 @@
   
   <div class="col-md-8">
 
-  <% if current_user.recipient.blank? %>
+  
         <h3>Enter Bank Account Information</h3>
       
       <p><u>Requirements:</u></p>
@@ -69,37 +70,26 @@
       <div class="col-md-4">
 
         <div class="form-group">
-          <%= label_tag :country %> US
+          <%= label_tag :country %><% if current_user.try(:admin?) %> US<% end %>
           <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
         </div>
       </div>
     </div>
         <div class="col-md-8">
         <div class="form-group">
-          <%= label_tag :routing_number %> 111000025 for test
+          <%= label_tag :routing_number %><% if current_user.try(:admin?) %> 111000025 for test <% end %>
           
           <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
         </div>
         <div class="form-group">
-          <%= label_tag :account_number %> 000123456789
+          <%= label_tag :account_number %><% if current_user.try(:admin?) %> 000123456789 <% end %>
           <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
         </div>
-      <% else %>
-        <h3></h3>
-        <p>Bank account information is saved from previous payout request</p>
-         
-        <div class="row">
-         <div class="col-md-5">
-            <div class="form-group">
-            <%= f.label "Please enter legal name for verification" %>
-            <%= f.text_field :legalname, class: "form-control" %>
-          </div>
-        </div>
-      </div>
+     
         
          
-      <% end %>
-    <p><i>** $XXX flat rate will be charged upon each payout</i></p>
+      
+    <p><i>** 3% flat rate will be charged upon each payout</i></p>
     <div class="form-group">
       <%= f.submit "Make Payout", class: "btn btn-success" %>
     </div>

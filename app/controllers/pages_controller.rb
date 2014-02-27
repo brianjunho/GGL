@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-before_filter :check_user, only: [:orders]
+before_filter :check_user, only: [:orders, :payouts]
 
   def home
   end
@@ -20,6 +20,9 @@ before_filter :check_user, only: [:orders]
   end
 
   def orders
+  end
+
+  def payouts
   end
 
    def check_user

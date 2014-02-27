@@ -2,4 +2,8 @@
 
 <%= render 'form', data: { no_turbolink: true } %>
 
-<%= link_to 'Back', listings_path, class: "btn btn-link" %>
+<% if current_user.try(:admin?) || current_user.try(:editor) %>
+	<%= link_to 'Back', listings_path, class: "btn btn-link" %>
+<% else %>
+	<%= link_to 'Back', root_url, class: "btn btn-link" %>
+<% end %>

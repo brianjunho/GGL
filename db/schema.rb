@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226074703) do
+ActiveRecord::Schema.define(version: 20140227083906) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20140226074703) do
   add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
 
   create_table "listings", force: true do |t|
-    t.string   "name"
     t.text     "prompt"
     t.text     "application"
     t.string   "option"
@@ -74,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140226074703) do
     t.datetime "updated_at"
     t.integer  "listing_id"
     t.integer  "customer_id"
+    t.decimal  "amount"
   end
 
   create_table "payments", force: true do |t|
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140226074703) do
     t.boolean  "editor",                 default: false
     t.text     "bio"
     t.string   "recipient"
+    t.decimal  "balance",                default: 0.0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

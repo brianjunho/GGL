@@ -34,7 +34,10 @@ class EditsController < ApplicationController
     @edit.listing_id = @listing.id
     @edit.editor_id = current_user.id
     @edit.requester_id = @requester.id
-    
+
+    current_user.balance = current_user.balance + (@listing.price * 0.15 * 0.25)
+    current_user.save
+        
 
     respond_to do |format|
       if @edit.save

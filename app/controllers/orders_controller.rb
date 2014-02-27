@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
     
     @order.customer_id = current_user.id
     @order.listing_id = @listing.id
+    @order.amount = @listing.price
 
     Stripe.api_key = ENV["STRIPE_API_KEY"]
     token = params[:stripeToken]
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
     begin
       charge = Stripe::Charge.create(
         :amount => (@listing.price * 100).floor,
-        :currency => "usd",
+        :currency => "cny",
         :card => token
         )
       flash[:notice] = "Thanks for ordering! Check back soon for your completed proofread"

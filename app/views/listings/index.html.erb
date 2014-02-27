@@ -5,27 +5,35 @@
       <table class="table table-bordered table-striped">
         <tr>
             <th class="center">Requester</th>
-            <th class="center">Name</th>
+            
             <th class="center">Prompt</th>
             <th class="center">Option</th>
-            <th class="center">Price</th>
+            <% if current_user.try(:admin?) %>
+              <th class="center">Price <br>(Full | To Editor)</th>
+            <% else %>
+              <th class="center">Price</th>
+            <% end %>
             <th class="center">Status</th>
         </tr>
            
-        <% @listings.each do |listing| %>
+        <% @listings.order("created_at DESC").each do |listing| %>
           <tr>
             <td>
               <a href="/users/<%= listing.user.id %>"><%= listing.user.name %></a></td>
-            <td><a href="/listings/<%= listing.id %>"><%= listing.name %></td>
+            
             <td><%= listing.prompt %></td>
             <td>
               <% if listing.option == "0" %>
-                  <p>Basic Proofread</p>
+                  <p>Basic</p>
               <% else %>
-                <p>Proofread and Comments</p>
+                <p>Standard Proofread and Comments</p>
               <% end %>
             </td>
-            <td><%= number_to_currency(listing.price) %></td>
+            <% if current_user.try(:admin?) %>
+                <td><%= number_to_currency(listing.price * 0.16) %>  | <%= number_to_currency(listing.price * 0.15 * 0.25) %></td>
+            <% else %>
+                 <td><%= number_to_currency(listing.price * 0.15 * 0.25) %></td>
+            <% end %>
             <td>
               <% if !listing.edit.nil? %>
                 <% if current_user.try(:admin?) %>
@@ -34,9 +42,9 @@
                 <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
                 <% end %>
               <% elsif listing.order.nil? %>
-                <% if current_user.try(:admin?) %>
-                    <p><%= link_to 'Pending Payment', listing, class: "btn btn-primary" %></p>
-                <% else %>
+                  <% if current_user.try(:admin?) %>
+                    <p><a href="/listings/<%= listing.id %>">Pending Payment</a> from User</p>
+                  <% else %>
                   <p>Pending Payment from User</p>
                   <% end %>
               <% else %>                  

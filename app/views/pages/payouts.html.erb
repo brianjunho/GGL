@@ -1,0 +1,38 @@
+<% if user_signed_in? && current_user.try(:admin?) %>
+	<h1>Payouts Summary</h1>
+
+
+    <h3>Total amount paid out to editors: <%= number_to_currency(Payment.sum(:request)) %></h3>
+    
+      <table class="table table-bordered table-striped">
+        <tr>
+            <th class="center">Payout made by</th>
+            
+            <th class="center">Amount</th>
+            <th class="center">Date made</th>
+            
+      
+         </tr>
+           
+        <% Payment.order("created_at DESC").each do |payment| %>
+          <tr>
+            <td>
+              <a href="/users/<%= payment.proofreader.id %>"><%= payment.proofreader.name %></a></td>
+            <td><%= number_to_currency(payment.request) %></td>
+             <td><%= payment.created_at.strftime("%B %-d, %Y") %></td>
+              
+        </tr>
+
+              <% end %>
+      </table>
+      
+
+
+    
+
+
+ <% else %>
+  <script type="text/javascript">
+        window.location.href="/dashboard"  
+  </script>
+<% end %>
