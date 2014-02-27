@@ -2,7 +2,7 @@
 	<h1>Payouts Summary</h1>
 
 
-    <h3>Total amount paid out to editors: <%= number_to_currency(Payment.sum(:request)) %></h3>
+    <h3>Total amount paid out to editors: <%= number_to_currency(Payment.sum(:request)) %> | Number payouts: <%= Payment.count(:id) %></h3>
     
       <table class="table table-bordered table-striped">
         <tr>
