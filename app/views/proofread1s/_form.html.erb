@@ -1,0 +1,30 @@
+<!-- Confirmation of Proofreading along with Legal disclaimer -->
+
+<%= form_for([@listing, @edit, @proofread1]) do |f| %>
+
+
+  <% if @proofread1.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><%= pluralize(@proofread1.errors.count, "error") %> prohibited this proofread from being saved:</h4>
+
+        <ul>
+        <% @proofread1.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+
+      </div>
+    <% end %>
+    
+    <div class="row">
+      <div class="col-md-6">
+         
+         <p> legal statement for them to agree with before submitting each job. basically, we need them to agree that there are no spelling and grammar errors in the proofreading and that they understand if there is any quality issue then we may suspend their account and withhold payment for that job.…etc. well need to think of tge wording very carefully.</p>
+  
+        <div class="form-group">
+          <%= f.submit "Submit Proofread", class: "btn btn-success" %>
+        </div>
+    </div>
+<% end %>
+</div>

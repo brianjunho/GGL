@@ -1,29 +1,47 @@
-<div class="row">
-    <h4><strong>Essay Type: </strong><%= @edit.listing.name %></h4>
-    <p><strong>Prompt: </strong><%= @edit.listing.prompt %></p>
-    <p><strong>Pricing Option: </strong>
-        <% if @edit.listing.option == "0" %>
-              Basic Proofread
-          <% else %>
-            Proofread and Comments
-          <% end %></p> 
-  </div>
+<% if (current_user == @edit.editor) && @edit.proofread1.nil? %>
   <div class="row">
-    <div class="col-md-6">
-        <p><strong>Application: </strong></p>
-        <p><%= @edit.listing.application %></p>
+        <div class="col-md-5">
+            <h1>Preview Proofread</h1>
+            <h4>You can still go back and edit. Proofread is not final</h4>
+            <br>
+        </div>
     </div>
-    <div class="col-md-6">
-        <div class="form-group">
-        <p><strong>Proofread Version: </strong></p>
-        <p><%= @edit.proofread %></p>
+  <div class="row">
+      <div class="col-md-6">
+        <p><strong>Prompt: </strong><%= @edit.listing.prompt %></p>
       </div>
-       <div class="form-group">
-          <% if @edit.listing.option == "1" %>
-                <p><strong>Comments: </strong><%= @edit.comments %></p>
-          <% end %>
+      <div class="col-md-6">
+        <div class="form-group">
+                <p><%= link_to "Submit Proofread", new_listing_edit_proofread1_path(@edit.listing, @edit), class: "btn btn-primary" %> &nbsp; &nbsp; 
+                <%= link_to 'Cancel Proofread', listing_edit_path(@edit.listing, @edit), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></p>
+            </div>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-md-6">
+          <p><strong>Application: </strong></p>
+          <p><%= @edit.listing.application %></p>
+      </div>
+      <div class="col-md-6">
+          <div class="form-group">
+          <p><strong>Proofread Version: </strong></p>
+          <p><%= @edit.proofread %></p>
+        </div>
+         <div class="form-group">
+            <% if @edit.listing.option == "1" %>
+                  <p><strong>Comments: </strong><%= @edit.comments %></p>
+            <% end %>
+         </div>
        </div>
-     </div>
-     </div>  
+       </div>  
+
+<% end %>
   
-<%= link_to 'Back', dashboard_path %>
+<% if current_user == @edit.editor %>
+    <% if @edit.proofread1.nil? %>
+        <%= link_to 'Edit', edit_listing_edit_path(@edit.listing, @edit), class: "btn btn-link" %> |
+        <% end %>
+    <%= link_to 'Back', dashboard_path, class: "btn btn-link" %>
+<% else %>
+    <%= link_to 'Back', dashboard_path, class: "btn btn-link" %>
+<% end %>

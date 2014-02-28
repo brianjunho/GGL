@@ -1,5 +1,7 @@
 GGL::Application.routes.draw do
   
+  resources :proofread1s
+
   resources :payments
 
    devise_for :users
@@ -12,8 +14,10 @@ GGL::Application.routes.draw do
     end
   
     resources :listings do
-      resources :orders
-      resources :edits, only: [:new, :create, :show]
+      resources :orders, only: [:new, :create]
+      resources :edits do
+        resources :proofread1s, only: [:new, :create]
+      end
       end
   
 
@@ -25,6 +29,8 @@ GGL::Application.routes.draw do
   get "pages/testimonial"
   get "pages/orders"
   get "pages/payouts"
+  get "pages/privacy"
+  get "pages/terms"
   
   get 'requests' => "listings#requests"
   get 'dashboard' => 'users#view_logged_in'

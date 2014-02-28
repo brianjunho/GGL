@@ -1,9 +1,7 @@
-<% if user_signed_in? && current_user.try(:admin?) %> 
+<% if current_user.try(:admin?) %> 
 	<h1>User Page</h1>
 	
-	<h3>Total users: <%= User.count(:id) %></h3>
-	<h3>Total editors: <%= User.count :conditions => ['editor = ?', true] %></h3>
-	
+	<h4>Total users: <%= User.count(:id) %> | Total editors: <%= (User.count :conditions => ['editor = ?', true]) - (User.count :conditions => ['admin = ?', true]) %> | Total regular users: <%= User.count :conditions => ['editor = ?', false] %></h4>
 	<br>
 	
 	<table class="table table-bordered table-striped">
@@ -19,12 +17,12 @@
 
     </tr>
 	  
-			<% User.all.where(editor: true).each do |user| %>
+			<% User.all.where(editor: true).order("created_at DESC").each do |user| %>
 	   	<tr>
 	  		<% if user.try(:admin?)%>
 	  			<td>Admin</td>
-	  			<% else %>
-	  		<td>Editor</td>
+	  		<% else %>
+	  			<td>Editor</td>
 	  		<% end %>
 	  		<td><%= user.id %></td>
 	  		<td><a href="/users/<%= user.id %>"><%= user.name %></a></td>

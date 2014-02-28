@@ -1,7 +1,7 @@
   <% if user_signed_in? && current_user.try(:editor?) %>
     <h1>Browse Listings</h1>
     <% if current_user.try(:admin?) %>
-      <h4>Number listings: <%= Listing.count(:id) %> | Completed: <%= Edit.count(:id) %></h4>
+      <h4>Number listings: <%= Listing.count(:id) %> | Completed (change to final edit step): <%= Edit.count(:id) %></h4>
       <% end %>
 
       <table class="table table-bordered table-striped">
@@ -39,7 +39,8 @@
             <td>
               <% if !listing.edit.nil? %>
                 <% if current_user.try(:admin?) %>
-                   <p><%= link_to "Completed", listing, class: "btn btn-link" %> on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
+                   <p>In Progress</p>
+                      <!-- <%= link_to "In progress", listing, class: "btn btn-link" %> on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p> -->
                 <% else %>
                 <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
                 <% end %>

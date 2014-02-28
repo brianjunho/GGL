@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_filter :check_user, only: [:show]
+  before_filter :check_user, only: [:new, :create]
   
 
 
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
  
-  # POST /orders
+  # POST /orders 
   # POST /orders.json
   def create
     @order = Order.new(order_params)
@@ -63,7 +63,7 @@ class OrdersController < ApplicationController
     end
 
     def check_user
-      if !((current_user == @listing.user) || current_user.try(:admin?))
+      if !((current_user == Listing.find(params[:listing_id]).user) || current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this order belongs to someone else"
       end
     end

@@ -14,13 +14,7 @@
 
   <div class="row">
     <p><strong>Prompt: </strong><%= @listing.prompt %></p>
-    <p><strong>Pricing Option: </strong>
-        <% if @listing.option == "0" %>
-              Basic Proofread
-          <% else %>
-            Proofread and Comments
-          <% end %></p>
-       <p><strong>Price: </strong><%= number_to_currency(@listing.price) %></p>
+    
        
   </div>
   <div class="row">
@@ -46,7 +40,7 @@
         
         </div>
           <div class="form-group">
-        <%= f.submit "Complete Edit", class: "btn btn-success" %>
+        <%= f.submit "Preview Edit", class: "btn btn-success" %>
       </div>
      </div>
      </div>  

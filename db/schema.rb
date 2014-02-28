@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227083906) do
+ActiveRecord::Schema.define(version: 20140228042329) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20140227083906) do
     t.integer  "proofreader_id"
     t.string   "legalname"
     t.decimal  "request"
+  end
+
+  create_table "proofread1s", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "editor_id"
+    t.integer  "edit_id"
   end
 
   create_table "reviews", force: true do |t|

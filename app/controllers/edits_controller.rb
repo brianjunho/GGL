@@ -4,11 +4,7 @@ class EditsController < ApplicationController
   before_filter :check_user, only: [:show, :edit]
  
   
-    # GET /edits
-  # GET /edits.json
-  def index
-    @edits = Edit.all
-  end
+
 
   # GET /edits/1
   # GET /edits/1.json
@@ -35,13 +31,14 @@ class EditsController < ApplicationController
     @edit.editor_id = current_user.id
     @edit.requester_id = @requester.id
 
+    # move to the very last proofread
     current_user.balance = current_user.balance + (@listing.price * 0.15 * 0.25)
     current_user.save
         
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to dashboard_path, notice: 'Proofread was successfully created.' }
+        format.html { redirect_to listing_edit_path(@edit) }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -67,6 +64,15 @@ class EditsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @edit.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+ 
+  def destroy
+    @edit.destroy
+    respond_to do |format|
+      format.html { redirect_to dashboard_path }
+      format.json { head :no_content }
     end
   end
 

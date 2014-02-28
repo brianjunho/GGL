@@ -25,6 +25,12 @@ before_filter :check_user, only: [:orders, :payouts]
   def payouts
   end
 
+  def privacy
+  end
+
+  def terms
+  end
+
    def check_user
       if !(current_user.try(:admin?))
         redirect_to root_url, alert: "Sorry, this cannot be accessed"

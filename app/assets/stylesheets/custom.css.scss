@@ -1,29 +1,40 @@
 @import "bootstrap";
 
 body {
-  background-color: #FFFFFF;
-  color: #333333;
-  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  background-color: #f8f8f8;
+  color: #5a5a5a;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  padding-bottom: 40px;
 }   
 
 .navbar-default {
-  background-color: #4D4843;
+  background-color: #333333;
+  border: 0;
 }
 
 .navbar-default .navbar-brand {
-  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
   font-weight: 400;
   color: #76923C;
   font-size: 30px;
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
-  font-size: 14 px;
+  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 18px;
   font-weight: bold;
   color: #EAF1DD;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+  padding: 25px 20px;
 }
 
+a {
+  color: #000033;
+}
+h1 {
+  color: #561420;
+  font-size:45px;
+}
 .navbar-default .navbar-nav > li > a:hover {
   
   color: #B4DBE6;
