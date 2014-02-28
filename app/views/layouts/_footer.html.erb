@@ -1,1 +1,6 @@
+
+<% if !current_user.try(:admin?) %>
+<p>&copy 2013-2014 Gaigaile. All Rights Reserved &nbsp; &nbsp; <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> </p>
+<% else %>
 <p>&copy 2013-2014 Gaigaile. All Rights Reserved</p>
+<% end %>

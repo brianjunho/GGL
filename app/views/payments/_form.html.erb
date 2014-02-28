@@ -35,16 +35,10 @@
         <br>
     <table class="table">
       <tr>
-      <td><strong>Available Amount:</strong></td>
-      <td><%= number_to_currency(current_user.balance) %></td
+      <td><strong>Amount to be Paid Out:</strong></td>
+      <td><%= number_to_currency(current_user.balance) %></td>
     </tr>
-    <tr>
-      <td>Enter request amount:</td>
-      <td><div class="form-group">
-
-         <%= f.text_field :request, class: "form-control" %>
-    </div></td>
-    </tr>
+    
   </table> 
     
   </div>

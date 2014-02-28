@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.proofreader_id = current_user.id
-    
+    @payment.request = current_user.balance    
     
       
       Stripe.api_key = ENV["STRIPE_API_KEY"]
@@ -45,7 +45,7 @@ class PaymentsController < ApplicationController
         :recipient => current_user.recipient
         )
 
-      current_user.balance = current_user.balance - @payment.request
+      current_user.balance = 0
       current_user.save
 
              respond_to do |format|
