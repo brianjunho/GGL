@@ -3,7 +3,7 @@
 body {
   background-color: #FFFFFF;
   color: #333333;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
 }   
 
 .navbar-default {
@@ -11,15 +11,15 @@ body {
 }
 
 .navbar-default .navbar-brand {
-  font-family: guardian-egyptt, georgia, serif;
+  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
   font-weight: 400;
   color: #76923C;
   font-size: 30px;
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-family: sans-serif, Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 14 px;
   font-weight: bold;
   color: #EAF1DD;
 }
