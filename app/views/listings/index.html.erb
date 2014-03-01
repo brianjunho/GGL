@@ -36,24 +36,25 @@
             <% else %>
                  <td><%= number_to_currency(listing.price * 0.15 * 0.25) %></td>
             <% end %>
-            <td>
+            
               <% if !listing.edit.nil? %>
-                <% if current_user.try(:admin?) %>
-                   <p>In Progress</p>
-                      <!-- <%= link_to "In progress", listing, class: "btn btn-link" %> on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p> -->
+                <% if !listing.edit.proofread1.nil? %>
+                   <td><p><%= link_to "Completed", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> on <%= listing.edit.proofread1.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p></td>
                 <% else %>
-                <p>Completed on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p>
-                <% end %>
+                  <td><p><%= link_to "In Progress", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> </p></td> 
+                  <% end %>
+                      <!-- <%= link_to "In progress", listing, class: "btn btn-link" %> on <%= listing.edit.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p> -->
+               
               <% elsif listing.order.nil? %>
                   <% if current_user.try(:admin?) %>
-                    <p><a href="/listings/<%= listing.id %>">Pending Payment</a> from User</p>
+                    <td><p><a href="/listings/<%= listing.id %>">Pending Payment</a> from User</p></td>
                   <% else %>
-                  <p>Pending Payment from User</p>
+                  <td><p>Pending Payment from User</p></td>
                   <% end %>
               <% else %>                  
-                <p><%= link_to 'Available', listing, class: "btn btn-primary" %></p>
+                <td><p><%= link_to 'Available', listing, class: "btn btn-info" %></p></td>
               <% end %>
-            </td>
+            
           </tr>
         <% end %>    
       </table>

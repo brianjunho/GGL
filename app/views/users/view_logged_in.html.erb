@@ -76,9 +76,14 @@
           <td class="center"><%= listing.updated_at.strftime("%B %-d, %Y") %></td>
           
           
-          <% if !listing.edit.nil? %>
-            <td class="center">Completed by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></td>           
-            <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.editor), class: "btn btn-link" %></td>
+           <% if !listing.edit.nil? %>
+            <% if !listing.edit.proofread1.nil? %>
+                   <td><p><%= link_to "Completed", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> on <%= listing.edit.proofread1.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p></td>
+                <% else %>
+                  <td><p><%= link_to "In Progress", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> </p></td> 
+                  <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.editor), class: "btn btn-link" %></td>
+                  <% end %> 
+            
             <td> 
               
               
@@ -140,8 +145,13 @@
           
           
           <% if !listing.edit.nil? %>
-            <td class="center">Completed by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></td>           
-            <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.editor), class: "btn btn-link" %></td>
+            <% if !listing.edit.proofread1.nil? %>
+                   <td><p><%= link_to "Completed", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> on <%= listing.edit.proofread1.created_at.strftime("%B %-d, %Y") %> by <a href="/users/<%= listing.edit.editor_id %>"><%= listing.edit.editor.name %></a></p></td>
+                <% else %>
+                  <td><p><%= link_to "In Progress", listing_edit_path(listing, listing.edit), class: "btn btn-link" %> </p></td> 
+                  <td class="center"><%= link_to 'Provide feedback', new_user_review_path(listing.edit.editor), class: "btn btn-link" %></td>
+                  <% end %>         
+            
             <td> 
               
               

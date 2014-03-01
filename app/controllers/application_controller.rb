@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :bio
   end
   def after_sign_in_path_for(resource)
-    stored_location_for(:user) || dashboard_path
+    dashboard_path
   end
 
   private
 
   def after_sign_out_path_for(resource)
-    stored_location_for(:user) || root_path
+    root_path
   end
   
 end

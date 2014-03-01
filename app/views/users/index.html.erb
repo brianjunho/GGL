@@ -14,6 +14,7 @@
         <th class="center">Created</th>
         <th class="center">Sign in count</th>
         <th class="center">Current Sign In</th>
+        <th></th>
 
     </tr>
 	  
@@ -32,6 +33,7 @@
  			   <td><%= user.sign_in_count %></td>
  			  
  			  <td><%= user.current_sign_in_at %></td>
+ 			  <td><%= user.balance %></td>
  			</tr>
 		<% end %>
 		<% User.all.where(editor: false).each do |user| %>

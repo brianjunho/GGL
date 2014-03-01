@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', listing_edits_path(@edit) %> |
-<%= link_to 'Back', listing_edits_path %>
+<%= link_to 'Show', listing_edit_path(@edit.listing, @edit) %> |
+<%= link_to 'Back', listing_path(@edit.listing) %>

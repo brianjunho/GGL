@@ -3,30 +3,31 @@
 body {
   background-color: #f8f8f8;
   color: #5a5a5a;
-  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-family: Helvetica, Arial, Tahoma, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
   padding-bottom: 40px;
 }   
 
 .navbar-default {
   background-color: #333333;
-  border: 0;
+    
 }
 
 .navbar-default .navbar-brand {
-  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-family: Helvetica, Arial, Tahoma, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
   font-weight: 400;
   color: #76923C;
   font-size: 30px;
 }
 
 .navbar-default .navbar-nav > li > a {
-  font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
-  font-size: 18px;
+  font-family: Helvetica, Arial, Tahoma, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 17px;
   font-weight: bold;
   color: #EAF1DD;
   text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-  padding: 25px 20px;
+  padding: 24px 20px;
 }
+
 
 a {
   color: #000033;
@@ -57,4 +58,6 @@ h1 {
   background-image: url('https://dl.dropboxusercontent.com/s/4ltp9fnk37rrcw9/small-0636.jpg');
   background-size: cover;
   color: #FFFFFF;
+  margin-bottom: 10px;
+
 }

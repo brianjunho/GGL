@@ -32,6 +32,11 @@ class Proofread1sController < ApplicationController
         format.json { render json: @proofread1.errors, status: :unprocessable_entity }
       end
     end
+
+     # move to the very last proofread
+    current_user.balance = current_user.balance + (@listing.price * 0.15 * 0.25)
+    current_user.save
+    
   end
 
   

@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row"> 
-        <div class="col-md-5">
+        <div class="col-md-5"> 
 
         	
             <p><strong>Prompt: </strong><%= @listing.prompt %></p>
@@ -24,7 +24,6 @@
                 <p><%= link_to "Place Order", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %></p>
                 <p><%= link_to 'Cancel Listing', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></p>
             </div>
-            
         </div>
         <div class="col-md-7">
     		

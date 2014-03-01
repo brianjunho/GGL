@@ -12,6 +12,7 @@ class EditsController < ApplicationController
   end
 
   def edit
+     @listing = Listing.find(params[:listing_id])
   end
 
   # GET /edits/new
@@ -25,20 +26,16 @@ class EditsController < ApplicationController
   def create
     @edit = Edit.new(edit_params)
     @listing = Listing.find(params[:listing_id])
+
     @requester = @listing.user
 
     @edit.listing_id = @listing.id
     @edit.editor_id = current_user.id
-    @edit.requester_id = @requester.id
-
-    # move to the very last proofread
-    current_user.balance = current_user.balance + (@listing.price * 0.15 * 0.25)
-    current_user.save
-        
+    @edit.requester_id = @requester.id    
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to listing_edit_path(@edit) }
+        format.html { redirect_to listing_edit_path(@edit.listing, @edit) }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -58,7 +55,7 @@ class EditsController < ApplicationController
 
     respond_to do |format|
       if @edit.update(edit_params)
-        format.html { redirect_to dashboard_path, notice: 'Proofread was successfully updated.' }
+        format.html { redirect_to listing_edit_path(@edit.listing, @edit) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
