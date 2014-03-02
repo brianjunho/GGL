@@ -1,8 +1,14 @@
 GGL::Application.routes.draw do
-  
-  resources :proofread1s
 
-  resources :payments
+
+
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+    
 
    devise_for :users
     resources :users, only: [:view_logged_out, :view_logged_in, :index, :like, :unlike] do
@@ -18,8 +24,9 @@ GGL::Application.routes.draw do
       resources :edits do
         resources :proofread1s, only: [:new, :create]
       end
-      end
-  
+    end
+
+  mount Forem::Engine, :at => '/forum'
 
   get "pages/home"
   get "pages/about"
@@ -31,6 +38,7 @@ GGL::Application.routes.draw do
   get "pages/payouts"
   get "pages/privacy"
   get "pages/terms"
+  get "pages/resources"
   
   get 'requests' => "listings#requests"
   get 'dashboard' => 'users#view_logged_in'

@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   before_filter :authenticate_user!, only: [:show, :index, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:show, :edit, :update, :destroy]
   before_filter :check_status, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /listings
   # GET /listings.json
@@ -108,4 +109,5 @@ class ListingsController < ApplicationController
      end
 
     
-end
+  end  
+

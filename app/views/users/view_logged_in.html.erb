@@ -42,10 +42,10 @@
             <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]).round(2) %></p>
       <% end %><br>
       <% if current_user.bio.nil? %>
-        <p>Click <%= link_to "here", edit_user_registration_path %> to add description</p>
+        <p>Click <%= link_to "here", edit_user_registration_path, class: "btn btn-link" %> to add description</p>
       <% else %>
         <p><strong>About me: </strong><%= current_user.bio %></p>
-        <p><%= link_to "Edit Bio", edit_user_registration_path %></p>
+        <p><%= link_to "Edit Bio", edit_user_registration_path, class: "btn btn-link  " %></p>
       <% end %>    
        
   </div>

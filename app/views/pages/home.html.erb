@@ -51,7 +51,8 @@
 </html>
 <% else %>
   <h1>Admin Dashboard</h1>
-  <p><%= link_to "About", pages_about_path, class: "btn btn-link" %> | <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> | <%= link_to "Team", pages_team_path, class: "btn btn-link" %> | <%= link_to "Pricing", pages_pricing_path, class: "btn btn-link" %> | <%= link_to "Testimonial", pages_testimonial_path, class: "btn btn-link" %></p>
+  <h4>Links</h4>
+  <p><%= link_to "About", pages_about_path, class: "btn btn-link" %> | <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> | <%= link_to "Team", pages_team_path, class: "btn btn-link" %> | <%= link_to "Pricing", pages_pricing_path, class: "btn btn-link" %> | <%= link_to "Testimonial", pages_testimonial_path, class: "btn btn-link" %> | <%= link_to "Forum", forem.root_path, class: "btn btn-link" %> | <%= link_to "Resources", main_app.pages_resources_path, class: "btn btn-link" %></p> 
   
  
   <% end %>

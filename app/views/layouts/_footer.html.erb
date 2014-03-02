@@ -1,6 +1,6 @@
 
 <% if !current_user.try(:admin?) %>
-<p>&copy 2013-2014 Gaigaile &nbsp;  <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> &nbsp;  <%= link_to "Team", pages_team_path, class: "btn btn-link"  %> &nbsp;  <%= link_to "Privacy", pages_privacy_path, class: "btn btn-link"  %>&nbsp;  <%= link_to "Terms", pages_terms_path, class: "btn btn-link"  %></p>
+<p>&copy 2013-2014 Gaigaile &nbsp;  <%= link_to "Contact", main_app.pages_contact_path, class: "btn btn-link" %> &nbsp;  <%= link_to "Team", main_app.pages_team_path, class: "btn btn-link"  %> &nbsp;  <%= link_to "Privacy", main_app.pages_privacy_path, class: "btn btn-link"  %>&nbsp;  <%= link_to "Terms", main_app.pages_terms_path, class: "btn btn-link"  %></p>
 <% else %>
 <p>&copy 2013-2014 Gaigaile</p>
 <% end %>

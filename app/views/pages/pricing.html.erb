@@ -1,54 +1,49 @@
-<h1 class="center">Services and Pricing  服务与收费</h1>
+<h1 class="center">服务与收费</h1>
 <h3 class="center">Gaigaile offers two service options with affordable pricing</h3>
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
 		<table class="table table-bordered center">
 		  <tr>
 		  	<th></th>
-		  	<th class="center"><h4>Basic 基础服务</h4><br>
-		  		<p>Ideal for quick fixes and last minute adjustments<br>适用于快速修订以及最后的文书调整</p></th>
-		  	<th class="center"><h4>Standard 标准服务</h4><br>
-		  		<p>Ideal for a comprehensive review of your application</p></th>
+		  	<th class="center"><h4>Basic<br>基础服务</h4></th>
+		  	<th class="center"><h4>Standard<br>标准服务</h4></th>
 		  </tr>
 		  <tr>
-		  	<td><b>Cost</b></td>
-		  	<td>1RMB/word</td>
-		  	<td>3RMB/word</td>
-		  </tr>
+		  	<td><b>初步校订</b><br><p>英语母语者专业校订，担保0拼写以及<br>语法错误</p></td>
+		  	<td><span class="glyphicon glyphicon-ok"></span></td>
+		  	<td><span class="glyphicon glyphicon-ok"></span></td>
 		  <tr>
-		  	<td><b>Proofreading 校订</b></td>
-		  	<td colspan="2">Professionally edited by a native English speaker, guaranteed to be free from spelling and grammar errors. <br>英语母语者专业校订，担保0拼写以及语法错误</td> 	
-		  </tr>
 		  <tr>
-		  	<td><b>Commenting 点评</b></td>
-		  	<td>-</td>
-		  	<td>Specially trained editors will give feedback and recommendations for essay content, logic, and structure. Your essay will also be graded according to our comprehensive scoring guidelines so you know how you’ll compare with other applicants.<br>由专业受训的文案为文书内容，逻辑以及架构给予反馈与建议。通过按照我们完整的评分标准对您的文书进行评分，您将知道您与其他申请者的比较。</td>
-		  </tr>
+		  	<td><b>点评</b><br><p>由专业受训的文案为文书内容，逻辑<br>以及架构给予反馈与建议。通过按照<br>我们完整的评分标准对您的文书进行<br>评分，您将知道您与其他申请者的比<br>较。</p><b>修订</b><p>在您根据文案的修改建议进行修订后，<br>将其文档传送给文案做最后的校订</p></td>
+		  	<td><span class="glyphicon glyphicon-remove"></span></td>
+		  	<td><span class="glyphicon glyphicon-ok"></span></td>
 		  <tr>
-		  	<td><b>Revise 修订</b></td>
-		  	<td>-</td>
-		  	<td>Take control of your own writing. Make changes according to your editor’s suggestions and then send it back for final proofreading <br>在您根据文案的修改建议进行修订后，将其文档传送给文案做最后的校订</td>
-		  </tr>
 		  <tr>
-		  	<td><b>Final Proofreading 最终校订</b></p>
-		  	<td>-</td>
-		  	<td>Your editor will have a final look at your writing to fix any remaining language and style errors. Your essay will also be re-scored according to our scoring guidelines so that you can see how much you’ve improved. <br>您的文案将会最终检查您的文书以及为您修正仍然存在的语言及样式的错误。在最后，我们还会对您修改后的文稿进行评分，通过此服务，您将知道您在其中取得了多大的进步。	</td>
+		  	<td><b>最终校订</b><br><p>您的文案将会最终检查您的文书以及<br>为您修正仍然存在的语言及样式的错<br>误。在最后，我们还会对您修改后的<br>文稿进行评分，通过此服务，您将知<br>道您在其中取得了多大的进步。</p></td>
+		  	<td><span class="glyphicon glyphicon-remove"></span></td>
+		  	<td><span class="glyphicon glyphicon-ok"></span></td>
+		  <tr>
+		  	<td></td>
+		  	<td>1元／字</td>
+		  	<td>3元／字</td>
 		  </tr>
 		</table>
-	</div>
-</div>
 		<p>*小于2天的处理时间</p>
 	
 
   <% if user_signed_in? %>
 
-	  <div class="col-md-2">
+	  <div class="col-md-4">
 	    <%= link_to "Create Listing", new_listing_path, class: "btn btn-info btn-lg btn-block" %>
 	  </div>
   <% else %>
-  	  <div class="col-md-2">
+  	  <div class="col-md-4">
 	    <%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %>
 	  </div>
   <% end %>
+	</div>
+</div>
+		
   <br><br>
   <br><br>
