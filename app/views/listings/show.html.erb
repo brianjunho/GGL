@@ -14,7 +14,7 @@
             <% if @listing.option == "0" %>
               <p><strong>Pricing Option: </strong>Basic Proofread</p>
             <% else %>
-              <p><strong>Pricing Option: </strong>Standard Proofread and Comments</p>
+              <p><strong>Pricing Option: </strong>Standard Proofread (w/ Comments and Suggestions)</p>
             <% end %>
             
             <p><strong>Word Count: </strong><%= @listing.word_count %> | 
@@ -28,9 +28,10 @@
         <div class="col-md-7">
     		
             <p><strong>Application: </strong></p>
-            <p><%= @listing.application %></p>
+            <p><%= simple_format(@listing.application) %></p>
+            
             <p><strong>Comments to Editor: </strong></p>
-            <p><%= @listing.comments %></p>
+            <p><%= simple_format(@listing.comments) %></p>
                        
 
            

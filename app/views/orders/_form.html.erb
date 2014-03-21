@@ -33,11 +33,11 @@
       <div class="form-group">
        <div class="row">
         <div class="col-md-8">
-          <%= label_tag :card_number, "Credit Card Number" %><% if current_user.try(:admin?) %>  Test # 4242424242424242<% end %>
+          <%= label_tag :card_number, "Credit Card Number" %> Test # 4242424242424242
           <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control" } %>
         </div>
         <div class="col-md-3">
-          <%= label_tag :card_code, "CVC" %><% if current_user.try(:admin?) %>  Test # 123<% end %>
+          <%= label_tag :card_code, "CVC" %> Test # 123
           <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
         </div>
       </div>

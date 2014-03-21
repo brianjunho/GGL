@@ -25,18 +25,12 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-gem 'bootstrap-sass', '~> 3.1'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
-gem "socialization"
 gem "stripe"
-
-gem 'forem', :github => "radar/forem", :branch => "rails4"
-gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
-gem 'will_paginate', '3.0.5'
-gem 'cancan'
 
 
 group :production do

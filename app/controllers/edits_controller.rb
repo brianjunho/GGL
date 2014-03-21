@@ -4,7 +4,7 @@ class EditsController < ApplicationController
   before_filter :check_user, only: [:show, :edit]
  
   
-
+ 
 
   # GET /edits/1
   # GET /edits/1.json

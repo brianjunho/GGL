@@ -17,12 +17,14 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @user = User.find(params[:user_id])
   end
 
    # POST /payments
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @user = User.find(params[:user_id])
     @payment.proofreader_id = current_user.id
     @payment.request = current_user.balance    
     

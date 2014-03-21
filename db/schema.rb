@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140301234781) do
+ActiveRecord::Schema.define(version: 20140321071333) do
 
   create_table "edits", force: true do |t|
     t.text     "proofread"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 20140301234781) do
     t.integer  "requester_id"
     t.integer  "editor_id"
     t.text     "comments"
+    t.integer  "word_count"
+    t.integer  "one_score"
+    t.text     "one_reason"
+    t.text     "one_suggestion"
+    t.integer  "two_score"
+    t.text     "two_reason"
+    t.text     "two_suggestion"
+    t.integer  "three_score"
+    t.text     "three_reason"
+    t.text     "three_suggestion"
+    t.integer  "four_score"
+    t.text     "four_reason"
+    t.text     "four_suggestion"
   end
 
   create_table "follows", force: true do |t|
@@ -182,6 +195,16 @@ ActiveRecord::Schema.define(version: 20140301234781) do
   create_table "proofread1s", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "editor_id"
+    t.integer  "edit_id"
+  end
+
+  create_table "relistings", force: true do |t|
+    t.text     "application"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "requester_id"
     t.integer  "editor_id"
     t.integer  "edit_id"
   end

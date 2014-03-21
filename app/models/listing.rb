@@ -5,5 +5,5 @@ class Listing < ActiveRecord::Base
 	belongs_to :user
 	has_one :edit, dependent: :destroy
 	has_one :order, dependent: :destroy
-
+	
 end

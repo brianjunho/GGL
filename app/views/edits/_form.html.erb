@@ -15,15 +15,14 @@
   <div class="row">
     <p><strong>Prompt: </strong><%= @listing.prompt %></p>
     
-       
   </div>
   <div class="row">
 
     <div class="col-md-6">
         <p><strong>Application: </strong></p>
-        <p><%= @listing.application %></p>
-        <p><strong>Comments for Editor: </strong></p>
-        <p><%= @listing.comments %></p>
+        <p><%= simple_format(@listing.application) %></p>
+        <p><strong>Comments from Customer: </strong></p>
+        <p><%= simple_format(@listing.comments) %></p>
     </div>
     <div class="col-md-6">
         <div class="form-group">
@@ -33,10 +32,11 @@
         </div>
      </div>
   </div>
+  <br>
   <div class="row">
     <div class="form-group">
           <% if @listing.option == "1" %>
-                <p><strong>Comments: </strong></p>
+                <p><strong>Suggestions: </strong></p>
           <!-- <%= f.label :comments %> -->
           <%= f.text_area :comments, rows: "5", placeholder: "Write comments here", class: "form-control" %>
     </div>
