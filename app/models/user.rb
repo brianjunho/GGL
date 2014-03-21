@@ -22,18 +22,12 @@ class User < ActiveRecord::Base
   has_many :requests, class_name: "Edit", foreign_key: "requester_id"
   has_many :edits, class_name: "Edit", foreign_key: "editor_id"
 
-  has_many :reviewsmade, class_name: "Review", foreign_key: "reviewee_id"
-  has_many :reviewsgiven, class_name: "Review", foreign_key: "reviewer_id"
+  
   has_many :purchases, class_name: "Order", foreign_key: "customer_id"
   has_many :moneytransfer, class_name: "Payment", foreign_key: "proofreader_id"
   has_many :proofreads, class_name: "Proofread1", foreign_key: "editor_id"
-  has_many :requests, class_name: "Relisting", foreign_key: "requester_id"
-  has_many :edits, class_name: "Relisting", foreign_key: "editor_id"
+
   
  
-
-
-
-
 
 end
