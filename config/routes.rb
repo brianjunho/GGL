@@ -5,8 +5,7 @@ GGL::Application.routes.draw do
 
    devise_for :users
     resources :users, only: [:view_logged_out, :view_logged_in, :index, :like, :unlike] do
-      
-      resources :payments
+            resources :payments
     end
   
     resources :listings do
