@@ -31,9 +31,11 @@
             <p><%= simple_format(@listing.application) %></p>
             
             <p><strong>Comments to Editor: </strong></p>
-            <p><%= simple_format(@listing.comments) %></p>
-                       
-
+            <% if @listing.comments = "" %>
+                <p>N/A</p>
+            <% else %>
+                <p><%= simple_format(@listing.comments) %></p>
+            <% end %>
            
         </div>
         
