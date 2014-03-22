@@ -1,7 +1,7 @@
   <% if user_signed_in? && current_user.try(:editor?) %>
     <h1>Browse Listings</h1>
     <% if current_user.try(:admin?) %>
-      <h4>Number listings: <%= Listing.count(:id) %> | Completed (change to final edit step): <%= Edit.count(:id) %></h4>
+      <h4>Number listings: <%= Listing.count(:id) %> | Completed: <%= Proofread1.count(:id) %></h4>
       <% end %>
 
       <table class="table table-bordered table-striped">

@@ -27,16 +27,106 @@
     <div class="col-md-6">
         <div class="form-group">
         <p><strong>Proofread Version: </strong></p>
-        <!-- <%= f.label :proofread %> -->
+        
         <%= f.text_area :proofread, rows: @listing.word_count/10, placeholder: "Write edits here", class: "form-control" %>
         </div>
      </div>
   </div>
-  <br>
+  <% if @listing.option == "1" %>
+  <br><br>
   <div class="row">
+    <h3>Grading Template</h3>
     <div class="form-group">
-          <% if @listing.option == "1" %>
-                <p><strong>Suggestions: </strong></p>
+      <b>Score 1</b><br>      
+      <%= f.radio_button :one_score, '1' %>
+      <%= f.label :one_score, '1', :value => '1' %>&nbsp
+     <%= f.radio_button :one_score, '2' %>
+      <%= f.label :one_score, '2', :value => '2' %>&nbsp
+      <%= f.radio_button :one_score, '3' %>
+      <%= f.label :one_score, '3', :value => '3' %>&nbsp
+      <%= f.radio_button :one_score, '4' %>
+      <%= f.label :one_score, '4', :value => '4' %>&nbsp
+      <%= f.radio_button :one_score, '5' %>
+      <%= f.label :one_score, '5', :value => '5' %><br>
+  </div>
+
+  <div class="form-group">
+    <b>Reasoning 1</b><br>
+    <%= f.text_area :one_reason, rows: 2, placeholder: "Write reasoning here", class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <b>Suggestion 1</b><br>
+    <%= f.text_area :one_suggestion, rows: 2, placeholder: "Write suggestion here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+      <b>Score 2</b><br>      
+      <%= f.radio_button :two_score, '1' %>
+      <%= f.label :two_score, '1', :value => '1' %>&nbsp
+     <%= f.radio_button :two_score, '2' %>
+      <%= f.label :two_score, '2', :value => '2' %>&nbsp
+      <%= f.radio_button :two_score, '3' %>
+      <%= f.label :two_score, '3', :value => '3' %>&nbsp
+      <%= f.radio_button :two_score, '4' %>
+      <%= f.label :two_score, '4', :value => '4' %>&nbsp
+      <%= f.radio_button :two_score, '5' %>
+      <%= f.label :two_score, '5', :value => '5' %><br>
+    
+  </div>
+   <div class="form-group">
+    <b>Reasoning 2</b><br>
+    <%= f.text_area :two_reason, rows: 2, placeholder: "Write reasoning here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <b>Suggestion 2</b><br>
+    <%= f.text_area :one_suggestion, rows: 2, placeholder: "Write suggestion here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+      <b>Score 3</b><br>      
+      <%= f.radio_button :three_score, '1' %> 
+      <%= f.label :three_score, '1', :value => '1' %>&nbsp
+     <%= f.radio_button :three_score, '2' %>
+      <%= f.label :three_score, '2', :value => '2' %>&nbsp
+      <%= f.radio_button :three_score, '3' %>
+      <%= f.label :three_score, '3', :value => '3' %>&nbsp
+      <%= f.radio_button :three_score, '4' %>
+      <%= f.label :three_score, '4', :value => '4' %>&nbsp
+      <%= f.radio_button :three_score, '5' %>
+      <%= f.label :three_score, '5', :value => '5' %><br>
+    
+  </div>
+   <div class="form-group">
+    <b>Reasoning 3</b><br>
+    <%= f.text_area :three_reason, rows: 2, placeholder: "Write reasoning here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <b>Suggestion 3</b><br>
+    <%= f.text_area :one_suggestion, rows: 2, placeholder: "Write suggestion here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+      <b>Score 4</b><br>      
+      <%= f.radio_button :four_score, '1' %>
+      <%= f.label :four_score, '1', :value => '1' %>&nbsp
+     <%= f.radio_button :four_score, '2' %>
+      <%= f.label :four_score, '2', :value => '2' %>&nbsp
+      <%= f.radio_button :four_score, '3' %>
+      <%= f.label :four_score, '3', :value => '3' %>&nbsp
+      <%= f.radio_button :four_score, '4' %>
+      <%= f.label :four_score, '4', :value => '4' %>&nbsp
+      <%= f.radio_button :four_score, '5' %>
+      <%= f.label :four_score, '5', :value => '5' %><br>
+    
+  </div>
+ <div class="form-group">
+    <b>Reasoning 4</b><br>
+    <%= f.text_area :four_reason, rows: 2, placeholder: "Write reasoning here", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <b>Suggestion 4</b><br>
+    <%= f.text_area :one_suggestion, rows: 2, placeholder: "Write suggestion here", class: "form-control" %>
+  </div>
+    <div class="form-group">
+          
+                <p><strong>Additional Comments: </strong></p>
           <!-- <%= f.label :comments %> -->
           <%= f.text_area :comments, rows: "5", placeholder: "Write comments here", class: "form-control" %>
     </div>

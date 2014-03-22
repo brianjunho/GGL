@@ -32,11 +32,7 @@
             
           <% end %>
       <% end %>
-      <% if (Review.count :conditions => ['reviewee_id = ?', current_user]) == 0 %>
-            <p><strong>Rating: </strong>N/A</p>
-      <% else %>
-            <p><strong>Rating: </strong><%= Review.average(:rating, :conditions => ['reviewee_id = ?', current_user]).round(2) %></p>
-      <% end %><br>
+      
       <% if current_user.bio.nil? %>
         <p>Click <%= link_to "here", edit_user_registration_path, class: "btn btn-link" %> to add description</p>
       <% else %>
@@ -180,7 +176,7 @@
               
               <th class="center">Requester</th>
               <th class="center">Date Completed</th>
-              <th></th>
+              
               <th class="center">Money made</th>
               <th class="center"></th>
               
@@ -192,11 +188,11 @@
                 <td class="center">Requested by <a href="/users/<%= edit.requester_id %>"><%= edit.requester.name %></a></td>
                 <% if !edit.proofread1.nil? %>
                   <td class="center"><%= edit.proofread1.created_at.strftime("%B %-d, %Y") %></td>
-                  <td class="center"><%= link_to 'Provide feedback', new_user_review_path(edit.requester), class: "btn btn-link" %></td>
+                  
                   <td class="center"><%= number_to_currency(edit.listing.price * 0.25 * 0.15) %></td>
                   <% else %>
                       <td class="center"><%= link_to "Pending Confirmation", listing_edit_path(edit.listing, edit) %></td>
-                      <td></td>
+                      
                       <td></td>
                    <% end %>
                  <td class="center form-group"><%= link_to 'View', listing_edit_path(edit.listing, edit), class: "btn btn-success" %></td>        

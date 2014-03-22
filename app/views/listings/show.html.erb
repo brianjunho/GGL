@@ -69,7 +69,7 @@
         </div>
         
     </div>
-<% elsif (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.nil? %>
+<% elsif (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.proofread1.nil? && (current_user.try(:editor?) || current_user.try(:admin?)) %>
     <div class="row">
         <div class="col-md-5">
             <h1>Listing</h1>
@@ -89,7 +89,11 @@
             <p><strong>Word Count: </strong><%= @listing.word_count %> | 
             <strong>Price: </strong><%= number_to_currency(@listing.price * 0.15 * 0.25) %></p>
             <br>
+            <% if @listing.edit.nil? %>
           <p>  <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %></p>
+          <% else %>
+            <p>  <%= link_to "Return to Proofread", listing_edit_path(@listing, @listing.edit), class: "btn btn-primary" %></p>
+                <% end %>
         </div>
         <div class="col-md-7">
             
@@ -102,7 +106,7 @@
         </div>
         
     </div>
-<% elsif !@listing.edit.nil? && (@listing.edit.editor == current_user) %>
+<% elsif !@listing.edit.proofread1.nil? && (@listing.edit.editor == current_user) %>
     <div class="row">
         <div class="col-md-5">
             <h1>Listing Completed</h1>
@@ -137,40 +141,7 @@
         </div>
         
     </div>
-<% elsif current_user.try(:admin?) %>
-    <div class="row">
-        <div class="col-md-5">
-            <h1>Listing Details</h1>
-            
-            
-            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
-            <% if @listing.option == "0" %>
-              <p><strong>Pricing Option: </strong>Basic Proofread</p>
-            <% else %>
-              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
-            <% end %>
-            
-            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
-            <strong>Price (Includes amount to Editor): </strong><%= number_to_currency(@listing.price * 0.16) %></p>
-            <br>
 
-                
-            
-        </div>
-        <div class="col-md-7">
-            <h1></h1><br>
-            <h2></h2>
-            <p><strong>Application: </strong></p>
-            <p><%= @listing.application %></p>
-            <p><strong>Comments to Editor: </strong></p>
-            <p><%= @listing.comments %></p>
-       
-                
-
-           
-        </div>
-        
-    </div>
 <% end %>
 
 

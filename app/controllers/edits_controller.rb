@@ -2,13 +2,12 @@ class EditsController < ApplicationController
   before_action :set_edit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_filter :check_user, only: [:show, :edit]
+  before_filter :check_status, only: [:new]
  
-  
- 
-
-  # GET /edits/1
+    # GET /edits/1
   # GET /edits/1.json
   def show
+    @listing = Listing.find(params[:listing_id])
   end
 
   def edit
@@ -26,6 +25,8 @@ class EditsController < ApplicationController
   def create
     @edit = Edit.new(edit_params)
     @listing = Listing.find(params[:listing_id])
+    @edit.word_count = @edit.proofread.scan(/[\w-]+/).size
+    @edit.average_score = (@edit.one_score.to_f + @edit.two_score.to_f + @edit.three_score.to_f + @edit.four_score.to_f)/4
 
     @requester = @listing.user
 
@@ -35,7 +36,7 @@ class EditsController < ApplicationController
 
     respond_to do |format|
       if @edit.save
-        format.html { redirect_to listing_edit_path(@edit.listing, @edit) }
+        format.html { redirect_to listing_edit_path(@listing, @edit) }
         format.json { render action: 'show', status: :created, location: @edit }
       else
         format.html { render action: 'new' }
@@ -81,7 +82,7 @@ class EditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def edit_params
-      params.require(:edit).permit(:proofread, :comments)
+      params.require(:edit).permit(:proofread, :one_score, :one_reason, :one_suggestion, :two_score, :two_reason, :two_suggestion, :three_score, :three_reason, :three_suggestion, :four_score, :four_reason, :four_suggestion, :comments)
     end
 
     def check_user
@@ -90,4 +91,9 @@ class EditsController < ApplicationController
       end
     end
 
+    def check_status
+        if !@edit.nil?
+          redirect_to root_url, alert: "Sorry, this listing has already been proofread"
+        end
+     end
 end
