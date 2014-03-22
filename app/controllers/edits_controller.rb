@@ -2,7 +2,7 @@ class EditsController < ApplicationController
   before_action :set_edit, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_filter :check_user, only: [:show, :edit]
-  before_filter :check_status, only: [:new]
+  
  
     # GET /edits/1
   # GET /edits/1.json
@@ -67,9 +67,11 @@ class EditsController < ApplicationController
 
  
   def destroy
+    
+    
     @edit.destroy
     respond_to do |format|
-      format.html { redirect_to dashboard_path }
+      format.html { redirect_to dashboard_path, notice: 'Proofread cancelled' }
       format.json { head :no_content }
     end
   end
@@ -91,9 +93,5 @@ class EditsController < ApplicationController
       end
     end
 
-    def check_status
-        if !@edit.nil?
-          redirect_to root_url, alert: "Sorry, this listing has already been proofread"
-        end
-     end
+  
 end
