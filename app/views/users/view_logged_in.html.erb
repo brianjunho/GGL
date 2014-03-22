@@ -189,7 +189,7 @@
                 <% if !edit.proofread1.nil? %>
                   <td class="center"><%= edit.proofread1.created_at.strftime("%B %-d, %Y") %></td>
                   
-                  <td class="center"><%= number_to_currency(@listing.price * 0.25 * 0.15) %></td>
+                  <td class="center"><%= number_to_currency(edit.listing.price * 0.25 * 0.15) %></td>
                   <% else %>
                       <td class="center"><%= link_to "Pending Confirmation", listing_edit_path(edit.listing_id, edit) %></td>
                       

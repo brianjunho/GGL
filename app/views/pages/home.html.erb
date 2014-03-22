@@ -33,7 +33,7 @@
     <% if user_signed_in? %>
       <% if !current_user.try(:admin?) %>
         <div class="col-md-2"></div>
-        <div class="col-md-4"><%= link_to "Become an Editor!", pages_contact_path %></div>
+        <div class="col-md-4"><%= link_to "Become an Editor!", pages_contact_path, class: "btn btn-success btn-lg btn-block" %></div>
         <div class="col-md-4"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
         <% end %>
     <% else %>

@@ -69,7 +69,7 @@
         </div>
         
     </div>
-<% elsif (current_user != @listing.user) && !@listing.order.nil? && @listing.edit.proofread1.nil? && (current_user.try(:editor?) || current_user.try(:admin?)) %>
+<% elsif (current_user != @listing.user) && !@listing.order.nil? && (current_user.try(:editor?) || current_user.try(:admin?)) %>
     <div class="row">
         <div class="col-md-5">
             <h1>Listing</h1>
