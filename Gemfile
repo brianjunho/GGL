@@ -32,6 +32,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 gem "stripe"
 
+gem "mysql2"
 
 group :production do
   gem 'pg'
