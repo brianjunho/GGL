@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20140322021347) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "word_count"
     t.decimal  "price"
     t.text     "comments"
-    t.integer  "word_count"
   end
 
   create_table "orders", force: true do |t|
