@@ -1,3 +1,40 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-color: #41B198;
+$secondary-color: #FFC25D;
+$highlight-color: #F35971;
+$background-color: #FFFFFF;
+$text-color: #000000;
+$link-hover: #000000;
+
+body {
+	
+}
+
+h1 {
+	font-weight: normal;
+}
+
+h2 {
+	font-weight: normal;
+}
+
+a:link, a:active, a:visited {
+	text-decoration: none;
+	color: $text-color;
+}
+
+a:hover {
+	text-decoration: none;
+	color: $link-hover;
+}
+
+.menu {
+	width: 100%;
+}
+
+.container {
+	width: 100%;
+}
