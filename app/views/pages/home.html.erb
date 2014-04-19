@@ -1,52 +1,74 @@
 <% if !current_user.try(:admin?) %>
 <html>
   <head>
-  <link type="text/css" rel="stylesheet" href="pages.css.scss" />
+    <link type="text/css" rel="stylesheet" href="/assets/pages.css.scss">
   </head>
-<body style="margin: 0px; padding: 0px; font-family: Tahoma, Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;">
-
-<div class="jumbotron">
-    <br><h1><b>顶级校对服务</b></h1>
-    <h2>Affordable and High Quality Proofreading</h2>
-    <h3>Professional, people-powered proofreading in one click</h3><br><br>
-
-    
-</div>
-
-
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-4">    
-	    <center><h2 style="font-weight: bold; color: #586E40;">即将推出</h2></center>
-	        <p>改改乐是一个网上校对平台, 特别为中国的学生提供专业和合宜的校对服务. 这服务可使他们联繫到高水準及来自美国名校的编辑, 帮助他们改善英文的申请文章, 以致可以成功地申请到海外的大学.</p>
-   
+  <body>
+    <div id="topbanner">
+      <div id="titlebox"></div>
     </div>
-    
-    <div class="col-md-4">
-	    <center><h3 style="font-weight: bold; color: #586E40;">COMING SOON</h3></center>
-	        <p>Gaigaile is an online proofreading platform made specifically for Chinese students looking for high-quality and affordable proofreading for their overseas university application essays.</p>
-        </div>
-    <div class="col-md-2"></div>
-  </div>
-  <div class="row">
 
-    
-    <% if user_signed_in? %>
-      <% if !current_user.try(:admin?) %>
-        <div class="col-md-2"></div>
-        <div class="col-md-4"><%= link_to "Become an Editor!", pages_contact_path, class: "btn btn-success btn-lg btn-block" %></div>
-        <div class="col-md-4"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
-        <% end %>
-    <% else %>
+    <div id="bottombox">
+      <div id="textstuff">
+        点击即可拥有顶级文书润色服务
+      </div>
+      <div class="column" id="col1">
+        <h2 class="custom" style="color: #97B8C2;">简易自主</h2><!--Simple-->
+        我们提供友好的操作平台，所有的自主权都在你手上，无需繁琐冗长的交流过程，轻点鼠标,即刻拥有
+      </div>
+      <div class="column" id="col2">
+        <h2 class="custom" style="color: #97B8C2;">高效处理</h2><!--Quick-->
+        短至最多两天的处理时间，一步到位,比传统文书修改处理时间减少65%以上
+      </div>
+      <div class="column" id="col3">
+        <h2 class="custom" style="color: #97B8C2;">顶级质量</h2><!--Quality-->
+        所有编辑均为专业受训的，来自美国顶尖高校的native speakers，拥有丰富的申请经验及扎实地道的语言功力
+      </div>
+      <br />
+    </div>
+
+    <div class="row"></div>
+
+    <!--
+    <div class="row">
       <div class="col-md-2"></div>
-      <div class="col-md-4"><%= link_to "Learn More", pages_about_path, class: "btn btn-info btn-lg btn-block" %></div>
-      <div class="col-md-4"><%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %></div>
-    <% end %>
-    <div class="col-md-2"></div>
-  </div>
+      <div class="col-md-4">    
+  	    <center><h2 style="font-weight: bold; color: #586E40;">即将推出</h2></center>
+  	        <p>改改乐是一个网上校对平台, 特别为中国的学生提供专业和合宜的校对服务. 这服务可使他们联繫到高水準及来自美国名校的编辑, 帮助他们改善英文的申请文章, 以致可以成功地申请到海外的大学.</p>
+     
+      </div>
+      
+      <div class="col-md-4">
+  	    <center><h3 style="font-weight: bold; color: #586E40;">COMING SOON</h3></center>
+  	        <p>Gaigaile is an online proofreading platform made specifically for Chinese students looking for high-quality and affordable proofreading for their overseas university application essays.</p>
+          </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        
 
-<br><br><br>
-</body>
+    <div class="row">
+      <% if user_signed_in? %>
+        <% if !current_user.try(:admin?) %>
+        <div class="content">
+          <div class="col-md-2"></div>
+          <div class="col-md-4"><%= link_to "Become an Editor!", pages_contact_path, class: "btn btn-success btn-lg btn-block" %></div>
+          <div class="col-md-4"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
+        </div>
+          <% end %>
+      <% else %>
+      <div class="content">
+        <div class="col-md-2"></div>
+        <div class="col-md-4", id="homebtn"><%= link_to "Learn More", pages_about_path, class: "btn btn-info btn-lg btn-block" %></div>
+        <div class="col-md-4", id="homebtn"><%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %></div>
+      </div>
+      <% end %>
+      <div class="col-md-2"></div>
+    </div>
+  -->
+
+    <br><br><br>
+  </body>
 
 
 </html>

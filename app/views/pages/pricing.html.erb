@@ -1,7 +1,58 @@
 
 
-<h1 class="center">服务与收费</h1>
-<h3 class="center">Gaigaile offers two service options with affordable pricing</h3>
+<h1 class="custom">服务与收费</h1>
+<h3 class="custom">改改乐提供两种价格适宜的服务</h3>
+
+<table id="prices">
+	<tr>
+		<th></th>
+		<td>基础服务</td>
+		<td>优越服务</td>
+	</tr>
+	<tr>
+		<th>零拼写错误</th>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th>语法梳理与提升</th>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th>地道纯正润色服务</th>
+		<td>x</td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th>对逻辑，架构，内容进行评分</th>
+		<td></td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th>根据评分细则分项点评</th>
+		<td></td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th>提供专业读后感意见</th>
+		<td></td>
+		<td>x</td>
+	</tr>
+	<tr>
+		<th></th>
+		<td>1元／字</td>
+		<td>1.5元／字</td>
+	</tr>
+</table>
+
+<% if user_signed_in? %>
+    <%= link_to "Create Listing", new_listing_path, class: "push_button blue", id:"order" %>
+<% else %>
+	<%= link_to "Get Started", new_user_registration_path, class: "push_button blue", id:"order" %>
+<% end %>
+
+<!--
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
@@ -46,6 +97,7 @@
   <% end %>
 	</div>
 </div>
+-->
 		
   <br><br>
   <br><br>
