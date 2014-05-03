@@ -1,11 +1,11 @@
 [global]
 ApplicationName=GGL
-AwsCredentialFile=c:/Users/Brian\.elasticbeanstalk\aws_credential_file
+AwsCredentialFile=C:\Users\Grace\.elasticbeanstalk\aws_credential_file
 DevToolsEndpoint=git.elasticbeanstalk.ap-northeast-1.amazonaws.com
 EnvironmentName=GGL-env
 EnvironmentTier=WebServer::Standard::1.0
 EnvironmentType=LoadBalanced
-InstanceProfileName=aws-elasticbeanstalk-ec2-role
+InstanceProfileName=
 OptionSettingFile=c:\Sites\GGL\.elasticbeanstalk\optionsettings.GGL-env
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes

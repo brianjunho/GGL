@@ -10,27 +10,27 @@
         <div class="col-md-5"> 
 
         	
-            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <p><strong>院校提出的具体要求（若有）: </strong><%= @listing.prompt %></p>
             <% if @listing.option == "0" %>
-              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+              <p><strong>所选择的服务: </strong>基础服务：语言润色</p>
             <% else %>
-              <p><strong>Pricing Option: </strong>Standard Proofread (w/ Comments and Suggestions)</p>
+              <p><strong>所选择的服务: </strong>Standard Proofread (w/ Comments and Suggestions)</p>
             <% end %>
             
-            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
-            <strong>Price: </strong>¥<%= (@listing.price).round(2) %></p>
+            <p><strong>字数统计: </strong><%= @listing.word_count %> | 
+            <strong>价格: </strong>¥<%= (@listing.price).round(2) %></p>
             <br>
             <div class="form-group">
-                <p><%= link_to "Place Order", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %></p>
+                <p><%= link_to "下单", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %></p>
                 <p><%= link_to 'Cancel Listing', listing_path(@listing), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></p>
             </div>
         </div>
         <div class="col-md-7">
     		
-            <p><strong>Application: </strong></p>
+            <p><strong>文书文本: </strong></p>
             <p><%= simple_format(@listing.application) %></p>
             
-            <p><strong>Comments to Editor: </strong></p>
+            <p><strong>对编辑的备注（英文） </strong></p>
             <% if @listing.comments = "" %>
                 <p>N/A</p>
             <% else %>
@@ -51,22 +51,22 @@
         <div class="col-md-5">
             
             
-            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <p><strong>院校提出的具体要求（若有）: </strong><%= @listing.prompt %></p>
             <% if @listing.option == "0" %>
-              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+              <p><strong>所选择的服务: </strong>基础服务：语言润色</p>
             <% else %>
-              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+              <p><strong>所选择的服务: </strong>优越服务：语言润色及对于架构，内容，逻辑等的专业点评</p>
             <% end %>
-            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
-            <strong>Price: </strong>¥<%= (@listing.price).round(2) %></p>
+            <p><strong>字数统计: </strong><%= @listing.word_count %> | 
+            <strong>价格: </strong>¥<%= (@listing.price).round(2) %></p>
             <br>
             
         </div>
         <div class="col-md-7">
             
-            <p><strong>Application: </strong></p>
+            <p><strong>文书文本: </strong></p>
             <p><%= @listing.application %></p>
-            <p><strong>Comments to Editor: </strong></p>
+            <p><strong>对编辑的备注（英文） </strong></p>
             <p><%= @listing.comments %></p>
         </div>
         
@@ -82,14 +82,14 @@
         <div class="col-md-5">
             
             
-            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <p><strong>院校提出的具体要求（若有）: </strong><%= @listing.prompt %></p>
             <% if @listing.option == "0" %>
-              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+              <p><strong>所选择的服务: </strong>基础服务：语言润色</p>
             <% else %>
-              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+              <p><strong>所选择的服务: </strong>优越服务：语言润色及对于架构，内容，逻辑等的专业点评</p>
             <% end %>
-            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
-            <strong>Price: </strong><%= number_to_currency(@listing.price * 0.15 * 0.25) %></p>
+            <p><strong>字数统计: </strong><%= @listing.word_count %> | 
+            <strong>价格: </strong><%= number_to_currency(@listing.price * 0.15 * 0.25) %></p>
             <br>
             <% if @listing.edit.nil? %>
           <p>  <%= link_to "Proofread Now", new_listing_edit_path(@listing), class: "btn btn-primary" %></p>
@@ -99,9 +99,9 @@
         </div>
         <div class="col-md-7">
             
-              <p><strong>Application: </strong></p>
+              <p><strong>文书文本: </strong></p>
             <p><%= @listing.application %></p>
-            <p><strong>Comments to Editor: </strong></p>
+            <p><strong>对编辑的备注（英文） </strong></p>
             <p><%= @listing.comments %></p>
               
             
@@ -119,23 +119,23 @@
         <div class="col-md-5">
             
             
-            <p><strong>Prompt: </strong><%= @listing.prompt %></p>
+            <p><strong>院校提出的具体要求（若有）: </strong><%= @listing.prompt %></p>
             <% if @listing.option == "0" %>
-              <p><strong>Pricing Option: </strong>Basic Proofread</p>
+              <p><strong>所选择的服务: </strong>基础服务：语言润色</p>
             <% else %>
-              <p><strong>Pricing Option: </strong>Proofread and Comments</p>
+              <p><strong>所选择的服务: </strong>优越服务：语言润色及对于架构，内容，逻辑等的专业点评</p>
             <% end %>
-            <p><strong>Word Count: </strong><%= @listing.word_count %> | 
-            <strong>Price: </strong><%= number_to_currency(@listing.price * 0.15 * 0.25) %></p>
+            <p><strong>字数统计: </strong><%= @listing.word_count %> | 
+            <strong>价格: </strong><%= number_to_currency(@listing.price * 0.15 * 0.25) %></p>
             <br>
             <p>Completed on: <%= @listing.edit.created_at.strftime("%B %-d, %Y") %></p>
         </div>
         <div class="col-md-7">
             <h1></h1>   
             <h2></h2><br>
-              <p><strong>Application: </strong></p>
+              <p><strong>文书文本: </strong></p>
             <p><%= @listing.application %></p>
-            <p><strong>Comments to Editor: </strong></p>
+            <p><strong>对编辑的备注（英文） </strong></p>
             <p><%= @listing.comments %></p>
               
          

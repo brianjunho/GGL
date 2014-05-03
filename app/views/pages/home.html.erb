@@ -29,45 +29,72 @@
 
     <div class="row"></div>
 
-    <!--
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-4">    
-  	    <center><h2 style="font-weight: bold; color: #586E40;">即将推出</h2></center>
-  	        <p>改改乐是一个网上校对平台, 特别为中国的学生提供专业和合宜的校对服务. 这服务可使他们联繫到高水準及来自美国名校的编辑, 帮助他们改善英文的申请文章, 以致可以成功地申请到海外的大学.</p>
-     
+    <div id="aboutcontent">
+      <div id="what" class="aboutcolumn">
+      <h2 class="custom">重新定义文书润色</h2>
+      在改改乐，我们提供顶级校对平台，区别于传统的冗长，被动的处理过程，给予顾客简单友好的操作体验
       </div>
-      
-      <div class="col-md-4">
-  	    <center><h3 style="font-weight: bold; color: #586E40;">COMING SOON</h3></center>
-  	        <p>Gaigaile is an online proofreading platform made specifically for Chinese students looking for high-quality and affordable proofreading for their overseas university application essays.</p>
-          </div>
-      <div class="col-md-2"></div>
-    </div>
-    <div class="row">
-        
-
-    <div class="row">
-      <% if user_signed_in? %>
-        <% if !current_user.try(:admin?) %>
-        <div class="content">
-          <div class="col-md-2"></div>
-          <div class="col-md-4"><%= link_to "Become an Editor!", pages_contact_path, class: "btn btn-success btn-lg btn-block" %></div>
-          <div class="col-md-4"><%= link_to "Create Listing", new_listing_path, class: "btn btn-success btn-lg btn-block" %></div>
-        </div>
-          <% end %>
-      <% else %>
-      <div class="content">
-        <div class="col-md-2"></div>
-        <div class="col-md-4", id="homebtn"><%= link_to "Learn More", pages_about_path, class: "btn btn-info btn-lg btn-block" %></div>
-        <div class="col-md-4", id="homebtn"><%= link_to "Get Started", new_user_registration_path, class: "btn btn-info btn-lg btn-block" %></div>
+      <div id="why" class="aboutcolumn">
+      <h2 class="custom">我们的使命与愿景</h2>
+      改改乐旨在帮助所有客户可以准确，自由地表达他们的诉求。我们希望帮助DIY学生，摆脱传统申请流程中的不透明和昂贵的花费，以更高的文书质量，申请到理想的海外院校
       </div>
-      <% end %>
-      <div class="col-md-2"></div>
     </div>
-  -->
 
     <br><br><br>
+
+    <a id="pricing"></a>
+    <h1 class="custom">服务与收费</h1>
+    <h3 class="custom">改改乐提供两种价格适宜的服务</h3>
+
+    <table id="prices">
+      <tr>
+        <th></th>
+        <td class="words">基础服务</td>
+        <td class="words">优越服务</td>
+      </tr>
+      <tr>
+        <th>零拼写错误</th>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th>语法梳理与提升</th>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th>地道纯正润色服务</th>
+        <td>✔</td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th>对逻辑，架构，内容进行评分</th>
+        <td></td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th>根据评分细则分项点评</th>
+        <td></td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th>提供专业读后感意见</th>
+        <td></td>
+        <td>✔</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="words">1元／字</td>
+        <td class="words">1.5元／字</td>
+      </tr>
+    </table>
+
+    <% if user_signed_in? %>
+        <%= link_to "Create Listing", new_listing_path, class: "push_button blue", id:"order" %>
+    <% else %>
+      <%= link_to "Get Started", new_user_registration_path, class: "push_button blue", id:"order" %>
+    <% end %>
+
   </body>
 
 
