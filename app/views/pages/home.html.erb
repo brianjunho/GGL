@@ -1,56 +1,137 @@
-<% if !current_user.try(:admin?) %>
-<html>
-  <head>
-    <link type="text/css" rel="stylesheet" href="/assets/pages.css.scss">
-  </head>
-  <body>
-    <div id="topbanner">
-      <div id="titlebox"></div>
+
+<!-- <title>改改乐：顶级校对平台－ Gaigaile</title> -->
+
+<% content_for :home do %>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#top"><%= image_tag "logo6.png", "height" => "22px" %></a>
     </div>
 
-    <div id="bottombox">
-      <div id="textstuff">
-        点击即可拥有顶级文书润色服务
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#info" data-toggle="collapse" data-target=".navbar-ex1-collapse">关于我们</a>
+        </li>
+        <li><a href="#services">服务与收费</a>
+        </li>
+        <li><a href="#resources">免费资源</a>
+        </li>
+        <li><a href="#faq">FAQ</a>
+        </li>
+        <li><a href="#login">登入</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<div class="intro-header">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="intro-message">
+          <h1>顶级校对平台</h1>
+          <h3>完美只差即刻</h3>
+          <hr class="intro-divider">
+          <ul class="list-inline intro-social-buttons">
+            <li><a href="#info" class="btn btn-default btn-lg"><font style="font-size: 1.5em; font-weight: normal;">了解更多</font></a>
+            </li>
+            <li><%= link_to "新用户注册", new_user_registration_path, class: "btn btn-primary btn-lg", style: "font-size:200%", id:"order" %>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="column" id="col1">
-        <h2 class="custom" style="color: #97B8C2;">简易自主</h2><!--Simple-->
-        我们提供友好的操作平台，所有的自主权都在你手上，无需繁琐冗长的交流过程，轻点鼠标,即刻拥有
-      </div>
-      <div class="column" id="col2">
-        <h2 class="custom" style="color: #97B8C2;">高效处理</h2><!--Quick-->
-        短至最多两天的处理时间，一步到位,比传统文书修改处理时间减少65%以上
-      </div>
-      <div class="column" id="col3">
-        <h2 class="custom" style="color: #97B8C2;">顶级质量</h2><!--Quality-->
-        所有编辑均为专业受训的，来自美国顶尖高校的native speakers，拥有丰富的申请经验及扎实地道的语言功力
-      </div>
-      <br />
     </div>
 
-    <div class="row"></div>
+  </div>
+  <!-- /.container -->
 
-    <div id="aboutcontent">
-      <div id="what" class="aboutcolumn">
-      <h2 class="custom">重新定义文书润色</h2>
-      在改改乐，我们提供顶级校对平台，区别于传统的冗长，被动的处理过程，给予顾客简单友好的操作体验
+</div>
+<!-- /.intro-header -->
+
+<div class="content-section-b" id="info">
+
+  <div class="container">
+    <hr class="section-heading-spacer-center"><br>
+
+    <div class="row">
+      <div class="col-sm-4"><center>
+        <%= image_tag "icons/checked13.png", "style" => "opacity: 0.2; height: 65px; margin-bottom: 15px;" %>
+        <h1 class="section-heading-center">简约而不简单</h1>
+        <p class="lead">简单操作，一键上传，自主选择。轻点鼠标，你值得拥有。</p></center>
       </div>
-      <div id="why" class="aboutcolumn">
-      <h2 class="custom">我们的使命与愿景</h2>
-      改改乐旨在帮助所有客户可以准确，自由地表达他们的诉求。我们希望帮助DIY学生，摆脱传统申请流程中的不透明和昂贵的花费，以更高的文书质量，申请到理想的海外院校
+      <div class="col-sm-4"><center>
+        <%= image_tag "icons/time12.png", "style" => "opacity: 0.2; height: 65px; margin-bottom: 15px;" %>
+        <h1 class="section-heading-center">高效但不马虎</h1>
+        <p class="lead">处理时间均在两日以内，相比传统的中介服务，交付时间减少了65％以上。</p></center>
+      </div>
+      <div class="col-sm-4"><center>
+        <%= image_tag "icons/businessmen25.png", "style" => "opacity: 0.2; height: 65px; margin-bottom: 15px;" %>
+        <h1 class="section-heading-center">质量重于泰山</h1>
+        <p class="lead">文案均为毕业于美国顶尖高校的母语使用者，文书质量是改改乐的首要诉求。</p></center>
       </div>
     </div>
 
-    <br><br><br>
 
-    <a id="pricing"></a>
-    <h1 class="custom">服务与收费</h1>
-    <h3 class="custom">改改乐提供两种价格适宜的服务</h3>
+  </div>
+  <!-- /.container -->
 
+</div>
+<!-- /.content-section-b -->
+
+
+<div class="content-section-a" id="about">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-5 col-sm-6">
+        <hr class="section-heading-spacer">
+        <div class="clearfix"></div>
+        <h1 class="section-heading">重新定义文书润色</h1>
+        <p class="lead">在改改乐，通过平台式的上传模式，区别于普通的复杂，冗长及被动的处理过程，给予顾客简单友好的操作体验。</p>
+        <!--<h1 class="section-heading">我们的使命与愿景</h1>-->
+        <p class="lead">改改乐旨在帮助所有客户摆脱语言的束缚，以可以准确，自由地表达他们的诉求。</p>
+      </div>
+      <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+        <%= image_tag "screen.png", "class" => "img-responsive", "alt" => "" %>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+
+<div class="content-section-b" id="services">
+
+  <div class="container">
+
+
+    <hr class="section-heading-spacer-center">
+    <div class="clearfix"></div>
+    <h1 class="section-heading-center">服务与收费</h1>
+
+    <h4 style="text-align: center">改改乐的两种服务套餐</h4>
     <table id="prices">
       <tr>
         <th></th>
-        <td class="words">基础服务</td>
-        <td class="words">优越服务</td>
+        <td style="color: #333333;">基础服务</td>
+        <td style="color: #333333;">优越服务</td>
       </tr>
       <tr>
         <th>零拼写错误</th>
@@ -58,53 +139,256 @@
         <td>✔</td>
       </tr>
       <tr>
-        <th>语法梳理与提升</th>
+        <th>句式词汇优化</th>
         <td>✔</td>
         <td>✔</td>
       </tr>
       <tr>
-        <th>地道纯正润色服务</th>
+        <th>地道语言润色</th>
         <td>✔</td>
         <td>✔</td>
       </tr>
       <tr>
-        <th>对逻辑，架构，内容进行评分</th>
+        <th>内容架构评分</th>
         <td></td>
         <td>✔</td>
       </tr>
       <tr>
-        <th>根据评分细则分项点评</th>
+        <th>逐项深度点评</th>
         <td></td>
         <td>✔</td>
       </tr>
       <tr>
-        <th>提供专业读后感意见</th>
+        <th>专业读后反馈</th>
         <td></td>
         <td>✔</td>
       </tr>
       <tr>
         <th></th>
-        <td class="words">1元／字</td>
-        <td class="words">1.5元／字</td>
+        <td style="color: #333333;">1.0元／字</td>
+        <td style="color: #333333;">1.5元／字</td>
       </tr>
-    </table>
+      <tr>
+        <th></th>
+        <td colspan="2">
+          <a href="#" class="btn btn-primary btn-block"><span class="button-text">立即订购</span></a>
+        </td>
+      </table>
 
-    <% if user_signed_in? %>
-        <%= link_to "Create Listing", new_listing_path, class: "push_button blue", id:"order" %>
-    <% else %>
-      <%= link_to "Get Started", new_user_registration_path, class: "push_button blue", id:"order" %>
-    <% end %>
+    </div>
+    <!-- /.container -->
 
-  </body>
-
-
-</html>
-<% else %>
-  <h1>Admin Dashboard</h1>
-  <h4>Links</h4>
-  <p><%= link_to "About", pages_about_path, class: "btn btn-link" %> | <%= link_to "Contact", pages_contact_path, class: "btn btn-link" %> | <%= link_to "Team", pages_team_path, class: "btn btn-link" %> | <%= link_to "Pricing", pages_pricing_path, class: "btn btn-link" %> | <%= link_to "Testimonial", pages_testimonial_path, class: "btn btn-link" %> | <%= link_to "Resources", pages_resources_path, class: "btn btn-link" %></p> 
-  
- 
-  <% end %>
+  </div>
+  <!-- /.content-section-b -->
 
 
+
+  <div class="content-section-a" id="resources">
+    <hr class="section-heading-spacer-center">
+    <div class="clearfix"></div>
+    <div class="container">
+      <h1 class="section-heading-center">免费在线资源</h1> <!--Free Resources-->
+      <h4 style="text-align: center">不知道从何下手？改改乐为您倾心打造书写简历和个人陈述的指南。</h4><br><br>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <center>
+            <%= image_tag "icons/user58.png", "style" => "opacity: 0.2; height: 85px; margin-bottom: 15px;" %>
+            <h3 class="info">Personal Statement</h3>
+            <p class="lead">~ 800 字</p>
+
+            <!-- Button trigger modal -->
+            <button class="btn btn-success" data-toggle="modal" data-target="#PSresources">
+              <span class="button-text">显示资源</span>
+            </button><br><br>
+          </center>
+          <!-- PS Resources Modal -->
+          <div class="modal fade" id="PSresources" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Personal Statement</h4>
+                </div>
+                <div class="modal-body">
+                  <h4>打造成功的个人陈述</h4>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">1. 了解个人陈述</a>
+                    <a href="#" class="list-group-item">2. 收集素材</a>
+                    <a href="#" class="list-group-item">3. 拟定大纲</a>
+                    <a href="#" class="list-group-item">4. 起草初稿</a>
+                    <a href="#" class="list-group-item">5. 校订及润色</a>
+                  </div>
+
+                  <h4>Sample Statements</h4>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">Business School</a>
+                    <a href="#" class="list-group-item">Engineering</a>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <!-- /Modal --> 
+
+
+
+
+        </div>
+        <div class="col-sm-4"><center>
+          <%= image_tag "icons/profile8.png", "style" => "opacity: 0.2; height: 85px; margin-bottom: 15px;" %>
+          <h3 class="info">Resume/CV</h3>
+          <p class="lead">~ 350 字</p>
+
+
+          <!-- Button trigger modal -->
+          <button class="btn btn-success" data-toggle="modal" data-target="#CVresources">
+            <span class="button-text">显示资源</span>
+          </button><br><br>
+        </center>
+        <!-- CV Resources Modal -->
+        <div class="modal fade" id="CVresources" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">CV/Resume</h4>
+              </div>
+              <div class="modal-body">
+                <h4>简历的自白书</h4>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">1. 简历到底是什么？</a>
+                  <a href="#" class="list-group-item">2. 炮制属于你的简历</a>
+                </div>
+
+                <h4>Sample 简历</h4>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">Sample Resume</a>
+                  <a href="#" class="list-group-item">Sample CV</a>
+                </div>
+
+                <h4>简历 Templates</h4>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">Resume template</a>
+                  <a href="#" class="list-group-item">CV template</a>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!-- /Modal --> 
+
+
+
+
+
+
+      </div>
+      <div class="col-sm-4"><center>
+        <%= image_tag "icons/mail59.png", "style" => "opacity: 0.2; height: 85px; margin-bottom: 15px;" %>
+        <h3 class="info">Cover Letter</h3>
+        <p class="lead">~ 300 字</p>
+
+
+        <!-- Button trigger modal -->
+        <button class="btn btn-success" data-toggle="modal" data-target="#CLresources">
+          <span class="button-text">显示资源</span>
+        </button>
+      </center>
+      <!-- CL Resouces Modal -->
+      <div class="modal fade" id="CLresources" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">Cover Letter</h4>
+            </div>
+            <div class="modal-body">
+              <h4>Sample Cover Letter</h4>
+              <div class="list-group">
+                <a href="#" class="list-group-item">Sample 1</a>
+                <a href="#" class="list-group-item">Sample 2</a>
+              </div>
+              <h4>Cover Letter Templates</h4>
+              <div class="list-group">
+                <a href="#" class="list-group-item">Template 1</a>
+                <a href="#" class="list-group-item">Template 2</a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <!-- /Modal -->                                             
+
+
+    </div>
+  </div>
+  <br>
+
+
+
+</div>
+<!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+
+
+<div class="content-section-b"  id="faq">
+  <div class="clearfix"></div>
+  <div class="container">
+    <hr class="section-heading-spacer-center">
+    <center>
+      <!--<img src="img/icons/help10.png" style="opacity: 0.2; height: 85px; margin-bottom: 15px;">-->
+      <h1 class="section-heading-center">FAQ</h1>
+      <p class="lead">看过介绍后还有疑问？点击FAQ查看最常问的问题以及解答。</p>
+      <p><a href="#" class="btn btn-primary btn-lg">改改乐 FAQ</a>
+      </p>
+    </center>
+  </div>
+</div>
+
+</div>
+<!-- /.container -->
+
+<% end %>
+
+<% content_for :js_add do %>
+<script>
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
+$(document).ready(function () {
+  $(".navbar-nav li a").click(function(event) {
+    $(".navbar-collapse").collapse('hide');
+  });
+});
+
+</script>
+
+<% end %>
